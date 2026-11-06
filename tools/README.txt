@@ -1,0 +1,1 @@
+Backup der Shorts-Werkzeuge (kein Spiel-Code). Falls das PC-Bundle sie nicht hat: clean.py -> tools/promo/motion/, fresh_beats.py -> tools/audio/, k_1106.py -> tools/promo/motion/days/, VIRAL.md -> tools/promo/.
