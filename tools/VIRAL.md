@@ -190,9 +190,16 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
   lagoon, temple. Schwach (dunkel): lake, galleon, mast. Formate damit: "Every zone in 15 seconds", "This game is HUGE" (Muster
   `s_world`), "Rate my base 1–10", "Which zone would you fish in? 1/2/3", Pete/Aquarium/Enchant-Feature-Videos.
 
-## !!! LAYOUT-REGEL ab 06.11. (User: "viel zu nah rangezoomt … voll tot")
-- Kein enger 9:16-Ausschnitt mehr. Breites Spielbild in der Mitte (clean.py LAY: clean 1080x886 bei y 470, day 1080x760 bei y 620),
-  unscharfer Hintergrund, Hook über dem Bild, Texte/Untertitel darunter, Beat-Zoom-Puls + Blitz auf dem Drop, leichter Push-in.
+## AE-Style ab 9.11. (User 08.11.: ALLE Videos so "fresh" wie SkipAHook_Beispiel_AE.mp4 – ersetzt den clean.py-Look)
+- **Werkzeug:** `tools/promo/ae/ae.py <tagesdatei> <id|all> stills|render` (Kopf = Format), Kern `aecore.py` (= promo\beispiel_2026-11-08\ae\render.py
+  konfigurierbar gemacht). Tagesdatei `tools/promo/ae/days/ae_MMDD.py` (Muster `ae_1109.py`, enthält auch POST_PLAN), Texte `posts_MMDD.json`.
+  Look: Spielbild-Band 1350 breit (y 642–1278) auf Blur-Hintergrund, Kopfzeile y 505 (Spring-Wörter, *GOLD), Karaoke y 1345, Whip/Zoom-Übergänge mit
+  Motion Blur, Shake/Flash/Chromatic bei Impacts, Light Leaks, Endkarte SKIP A HOOK + "Search on Roblox"-Pill, CCU-Balken (prog). 60 fps, crf 19/max 17M, -14 LUFS.
+  Clean: Hook ab Bild 1 sichtbar, Drop auf Beat 4, Schnitte 2–3 Beats -> bei >=146 BPM mind. 22 Beats planen (sonst < 9 s). Day: Stimme am_puck 0.8/0.5.
+- **Render:** ~11 s Clean = ~120 s, ~21 s Day = ~250 s (2 Kerne, 2 parallel) -> 27 Videos ≈ 45 min. Schleife: /home/claude/runae.sh-Muster
+  (überspringt fertige, 2 Prozesse, `timeout 570`, mehrmals aufrufen). Clips direkt aus /mnt/user-data/uploads/.../promo/clips (stagen, ~870 MB in 3 Aufrufen).
+- **Stolperfallen:** keine erfundenen Zahlen im Counter (far2_meter_c zeigt 4,08M m, koi2_leap_counter eigenen Zähler) -> Counter nur mit echter Zahl.
+  Spiel-Texte (PERFECT!, Titel) bleiben im Band, eigene Texte außerhalb -> keine Überlagerung. raw.githubusercontent gibt aus der Sandbox 403, Metricool lädt trotzdem.
 
 ## Clean Edits ab 5.11. (User 04.11. 21:58: "nur noch cleane edits und daily update, freshe Sounds, neue Texte")
 - **Werkzeuge (neu gebaut 05.11. abends – die Mittags-Fassung vom 5.11. war NIE im Bundle, nur Videos im Shorts-Repo):**
@@ -213,11 +220,18 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 |---|---|---|---|---|---|
 | 1 | 05.11. | 10 | – | – | (Mittags-Sitzung) |
 | 2 | 06.11. | 8 (-20,5 %) | 28,840 | 1,285 | cc2_tt Server-Events · cc2_yt Streak-Glück · cc2_m2 erste 5 Minuten |
+| 3 | 07.11. | 8 (±0, Dashboard +1,1 %) | 29,497 | 1,311 | Rework-PLAN: cc3_tt Auto-Skip · cc3_yt nur 3 Zahlen · cc3_m2 Trainings-Matte (AFK) |
+| 4 | 08.11. | 11 (+55,9 % laut Dashboard) | 30,229 | 1,337 | Rework GEBAUT + veröffentlicht (games-API updated 07.11. 18:48 UTC): cc4_tt Auto-Skip/Wände · cc4_yt 3 Zahlen, Rute=Power/Haken=Luck · cc4_m2 Freunde-Boost + Welt 2 |
+| 5 | 09.11. | 10 (-1, Dashboard 8,2 %) | 30,977 | 1,365 | A-Paket (geschrieben, NICHT eingebaut): cc5_tt Geschenk-Truhe · cc5_yt FTUE-Funnel · cc5_m2 Robux-Ranglisten weg -> Skips Today |
 
 ## Day-X "updating my Roblox game every day"
 - Mtrix-YT + mtfgams12: Day 1 = 5.11., **Day 2 = 6.11.** (dx_yc Fish Rush/Meteor, dx_n Ziel-Silhouette) -> Day 3 = 7.11.
 - B-TikTok, B-YouTube, C-TikTok, C-Instagram: **Day 1 = 6.11.** (dx_b Got away, dx_yb Meteor Fish, dx_c Morgen-Fang, dx_ic Zonen-Leiste) -> Day 2 = 7.11.
 - Alles aus Update 217 "Core Loop 2.0" (unklar ob live -> "I built"). Eier sind aus (217e) -> nicht erwähnen. Für Day 3 neue Commits ansehen.
+- 07.11.: Mtrix-YT/mtfgams12 **Day 3** (dx3_yc Rework-Entscheidung, dx3_n Bestenliste "Most Skips Today"); B-TT/B-YT/C-TT/C-IG **Day 2** (dx2_b Skip Simulator, dx2_yb Gold-Ringe x10, dx2_c Zonen-Wände, dx2_ic Skip-Combo). Keine neuen Update-Commits seit 217 -> alles ehrlich als PLAN aus docs/plans/BIG_REWORK.md. Nächster Tag: Day 4 bzw. Day 3; neue Commits prüfen (Rework gebaut?).
+- 08.11.: Mtrix-YT/mtfgams12 **Day 4** (dx4_yc Rework fertig + Aquarium füllt sich + Welt 2, dx4_n Rank Up ohne Reset + Rod Stars); B-TT/B-YT/C-TT/C-IG **Day 3** (dx3_b Skip-Simulator +1 je Skip + Bank, dx3_yb Rute=POWER/Haken=LUCK, dx3_c Zonen-Wände, dx3_ic neues Tutorial). Quelle: git log Rework R1–R2f (6.–7.11.) + CLAUDE.md "NÄCHSTES UPDATE = WELT 2". Nächster Tag: Day 5 bzw. Day 4. **Clips zeigen noch das ALTE Spiel** -> neue Rework-Aufnahmen beim User anfragen.
+
+- 09.11. (AE-Style): Mtrix-YT/mtfgams12 **Day 5** (dx5_yc erste Minute: Truhe + LUCKY! + Skips Today, dx5_n Skips Today/Top Power); B-TT/B-YT/C-TT/C-IG **Day 4** (dx4_b Ranglisten, dx4_yb Geschenk-Truhe, dx4_c 11-Schritte-Funnel, dx4_ic +N-Pool gegen Lag). Quelle git 17e65c2 A-Paket (nur Code+Tests, nicht eingebaut -> "coded / next update"). Nächster Tag: Day 6 bzw. Day 5.
 
 **promo\clips am 06.11. benutzt (102 Clips, alle mit neuen Startzeiten):** siehe `days/k_1106.py`. Bibliothek ist seit 5.11. komplett mehrfach
 benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fish Rush, Meteor, Got away, Zonen-Leiste, Morgen-Karte).
@@ -271,6 +285,9 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
 | 02.11. | C | d02_c1–c4 | Pick 1/2/3 Secrets · Dev Cutscenes · Tipp Distanz · Would you rather Kraken/Wal | – | – | – | |
 | 02.11. | C-IG | d02_ic1–ic4 | Send this to… Koi (EXPERIMENT Share) · Dev schwerer = größer · 3 Dinge für Neue · Dev Speedboote | – | – | – | |
 | 06.11. | alle 9 | k06_* (18 Clean) + cc2_* (CCU Day 2) + dx_* (Day 1/2) | Clean/Day-X | – | – | – | erster Tag neue Stil-Regeln, Musik fresh_beats *_0611_*; Metricool-Zahlen nicht geholt (Limit) |
+| 07.11. | alle 9 | k07_* (18 Clean) + cc3_* (CCU Day 3) + dx2_*/dx3_* | Clean/Day-X | – | – | – | Musik *_0711_* (11 neue Varianten), Metricool-Zahlen wieder nicht geholt (Limit sparen) |
+| 09.11. | alle 9 | k09_* (18 Clean) + cc5_* (CCU Day 5) + dx4_*/dx5_* | AE-Style | – | – | – | erster AE-Tag (ae.py), Musik *_0911_* (6 neu) + *_0811_*; Metricool-Zahlen nicht geholt (Limit) |
+| 08.11. | alle 9 | k08_* (18 Clean) + cc4_* (CCU Day 4) + dx3_*/dx4_* | Clean/Day-X | – | – | – | Musik *_0811_* (11 neue Varianten); erstes Thema = echter Rework; Metricool-Zahlen nicht geholt (Limit sparen) |
 
 **promo\clips am 02.11. benutzt (nächste Tage andere nehmen):** koi2_leap_counter, koi_seq_1, koi_seq_3, koi2_pillars, koi2_splash_hover,
 koi_hover, t_main_flyover, t_main_walkup, t_zones_temple, t_zones_skyisland, t_zones_endgate, t_zones_boats, t_zones_wreck, t_kraken_face/cave/
@@ -320,3 +337,11 @@ g_pink_pillar_fishing. **Alles in der Bibliothek ist jetzt mindestens einmal ben
 - Clip-Hinweise 05.11.: Titel-/Karten-Clips (x_moon 0–1,4 s "ETHEREAL!", whale2_title, koi2_title, ancient_reveal "ANCIENT", golden_shark_reveal 0–2 s "SECRET!", t_zones_title "SKIP A HOOK"
   abgeschnitten) haben Spieltext OBEN genau auf Höhe unserer Kopfzeile -> Kopfzeilen-Szenen nur auf die Teile ohne Banner legen. whale2_ride_* + far2_* + bench_lift: HUD oben stört.
   whale2_card_titanic = 0–2 s Titel, 2–3,5 s "TITANIC!", danach leere Nacht. golden_shark_reveal 2,0–2,9 s weißer Ring. c12_garage_short Anfang weiß überstrahlt. t_kraken_breach 0–2,5 s nur Höhle.
+
+**promo\clips am 08.11. benutzt (107 Clips, neue Startzeiten):** siehe `days/k_1108.py`. Neu wieder dabei: koi2_wall/pillars/splash_hover, koi_seq_1, aqua_giant_*, c30_boat(_short), c12_garage_long, c33_rodcase, golden_shark_reveal (raus), far_supernova, cosmic_dragon_hold, t_main_drill/sea_flight/flyover.
+- Clip-Hinweise 08.11.: c33_rodcase/ui_rodcase_* = Menü mit Text -> nie unter Kopfzeilen/Untertitel; far_meter_*/far2_meter_* HUD-Meter oben + PERFECT! genau auf Text-Höhe 1180 -> meiden; whale2_ride_a/whale2_counter Leiste + MISS!; ui_pete_collect Menü; g_secret_bite_flash 3 s weiß + eigene Untertitel; t_zones_statue 0,4 s unscharfe Nahaufnahme; g_hud_golden_shark ~4,5 s Weiß-Blitz; cosmic_dragon_reveal 1 s Pink-Blitz (ab 3,2 ok). Weiße/gelbe Einzelbilder im Kontaktbogen = fadewhite/zoomin-Übergänge (ok).
+
+**promo\clips am 07.11. benutzt (109 Clips, neue Startzeiten):** siehe `days/k_1107.py`. Bibliothek ist komplett mehrfach durch -> NEUE AUFNAHMEN, spätestens wenn der Skip-Simulator-Rework gebaut ist (Auto-Skip, Zahlen, Zonen-Wände).
+- Clip-Hinweise 07.11.: **t_calm_e enthält das Trailer-Logo "SKIP A HOOK"** (Mitte) -> nie unter eigenen Texten; t_calm_a 0–0,8 s fast schwarz (Endkarte!); t_kraken_roar + t_main_underwater enden mit Trailer-Titel ("SKIP A HOOK" auf Rot/Weiß); c11_bench_short Anfang = grüne Vollbild-Nahaufnahme; t_main_cast_skip/c28_reel/c26_cast_catch zeigen "PERFECT! +1 SKIP" genau an der Unterkante der Day-Karte; g_mutation_goldfish 2 s Spieltext oben (Endkarte end_y=1150).
+
+**promo\clips am 09.11. benutzt (136 Clips, AE-Style):** siehe `tools/promo/ae/days/ae_1109.py`. Weiter nur ALTES Spiel -> Rework-Aufnahmen (Auto-Skip, 3 Zahlen, Bank, Zonen-Wände, Geschenk-Truhe) dringend (RECORDING.md).
