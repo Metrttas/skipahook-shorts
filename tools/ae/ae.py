@@ -205,7 +205,7 @@ def build_day(v, vid, seed):
             cur.append(w)
         if cur: groups.append(cur)
         if len(groups) > 1 and len(groups[-1]) == 1 and len(groups[-1][0][0]) <= 3:
-            groups[-2] += groups.pop()
+            last_g = groups.pop(); groups[-1] += last_g   # Fix 10.11.: alter Code las groups[-2] vor dem pop
         nxt = VO_OFF + blocks[bi + 1]['start'] if bi + 1 < len(blocks) else total
         for gi, g in enumerate(groups):
             a = g[0][1] - 0.04
