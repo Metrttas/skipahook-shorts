@@ -8,6 +8,8 @@
 # CLEAN (kind='clean'): keine Stimme, Musik ist der Star, Schnitte auf dem Beat.
 #   dict(kind='clean', music='mtg_0911_e', segs=[(clip, src, beats, 'HEAD *GOLD', {opts}), ...])
 #   1. Seg = Hook, genau 4 Beats (Drop auf Beat 4), Text ab Bild 1 voll sichtbar. Letztes Seg mit opts end=True = Endkarte.
+#   HIGH-END (User 09.11.): Shots 3–4 Beats (keine 2-Beat-Hektik), 5–7 Shots, 11–15 s; Clips, die inhaltlich zusammenpassen (ein Thema/Moment
+#   pro Video, gleiche Tageszeit/Zone); Ruckeln wird in aecore.load_seg automatisch entfernt (Doppelbilder raus + optischer Fluss).
 #   opts: sp=0.6 (Zeitlupe), counter=(a, b) ersetzt '#' im Text, z=(1.0, 1.1), bar='rarity'.
 # DAY (kind='day'): Ich-Devlog, Stimme am_puck 0.8 / Pause 0.5, Karaoke-Untertitel y 1345, Musik leise (MUSIC_VO).
 #   dict(kind='day', music=..., lines=[('Satz.', [(clip, src), ...], 'HEAD *GOLD' or '', {opts}), ...], prog=(a, b, 1000))
@@ -28,7 +30,7 @@ OUT = os.path.join(ROOT, 'out/ae')
 SR = 48000
 MUSIC_VO = 0.10       # Musik unter der Stimme (nicht erhöhen)
 VO_OFF = 0.35
-TR_CYCLE = ['whip', 'zoom', 'whipup', 'zoom', 'whip', 'flash']
+TR_CYCLE = ['zoom', 'whip', 'zoom', 'whipup']   # clean: keine Blitz-Übergänge mehr in der Mitte
 _clipdur = {}
 
 

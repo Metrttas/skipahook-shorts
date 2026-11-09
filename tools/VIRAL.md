@@ -198,6 +198,9 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
   Clean: Hook ab Bild 1 sichtbar, Drop auf Beat 4, Schnitte 2–3 Beats -> bei >=146 BPM mind. 22 Beats planen (sonst < 9 s). Day: Stimme am_puck 0.8/0.5.
 - **Render:** ~11 s Clean = ~120 s, ~21 s Day = ~250 s (2 Kerne, 2 parallel) -> 27 Videos ≈ 45 min. Schleife: /home/claude/runae.sh-Muster
   (überspringt fertige, 2 Prozesse, `timeout 570`, mehrmals aufrufen). Clips direkt aus /mnt/user-data/uploads/.../promo/clips (stagen, ~870 MB in 3 Aufrufen).
+- **Ruckel-Fix 09.11. (User: "Clips sollen nicht ruckeln"):** Aufnahmen haben 8–30 % Doppelbilder (Spiel ~45 fps, Recorder füllt auf 60 auf,
+  koi_seq_2 am schlimmsten). aecore.load_seg wirft Doppelbilder raus, verteilt echte Bilder gleichmäßig und rechnet Zwischenbilder per DIS-Fluss
+  (Messung koi: Standbilder 31 % -> 0 %, Ruckler 52 % -> 0 %, kaum Mehrzeit). Übergänge ruhiger (kein Blitz in der Mitte), Korn halb.
 - **Stolperfallen:** keine erfundenen Zahlen im Counter (far2_meter_c zeigt 4,08M m, koi2_leap_counter eigenen Zähler) -> Counter nur mit echter Zahl.
   Spiel-Texte (PERFECT!, Titel) bleiben im Band, eigene Texte außerhalb -> keine Überlagerung. raw.githubusercontent gibt aus der Sandbox 403, Metricool lädt trotzdem.
 

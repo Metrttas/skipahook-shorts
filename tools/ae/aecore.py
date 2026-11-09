@@ -323,18 +323,49 @@ def load_seg(i):
            "-vf", f"fps={FPS},scale={MW}:{MH}:flags=lanczos", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
     raw = subprocess.run(cmd, capture_output=True, check=True).stdout
     fr = np.frombuffer(raw, np.uint8).reshape(-1, MH, MW, 3)
-    s["_frames"], s["_lo"] = fr, lo
-    print(f"loaded seg {i} {s['clip']} {len(fr)} frames", flush=True)
+    # --- Ruckel-Fix (09.11.): Aufnahmen haben doppelte Bilder (Spiel ~45 fps, Recorder füllt auf 60 auf).
+    # Doppelte raus, echte Bilder gleichmäßig auf die Zeit verteilen, Zwischenbilder per optischem Fluss.
+    sm = np.stack([cv2.resize(cv2.cvtColor(f, cv2.COLOR_RGB2GRAY), (192, 91), interpolation=cv2.INTER_AREA) for f in fr]).astype(np.float32)
+    d = np.abs(np.diff(sm, axis=0)).mean(axis=(1, 2))
+    nz = d[d > 0.3]
+    thr = max(0.25, 0.08 * (np.median(nz) if len(nz) else 1.0))
+    keep = [0] + [k + 1 for k in range(len(d)) if d[k] > thr]
+    u = fr[keep]
+    du = np.abs(np.diff(sm[keep], axis=0)).mean(axis=(1, 2)) if len(keep) > 1 else np.zeros(0)
+    med = np.median(du) if len(du) else 1.0
+    s["_cut"] = (du > max(18.0, 4.0 * med))          # Szenenschnitt im Clip -> nicht interpolieren
+    s["_frames"], s["_lo"] = u, lo
+    s["_dt"] = (len(fr) / FPS) / max(1, len(u))       # echte Bilder gleichmäßig über die Spanne
+    s["_flow"] = None
+    print(f"loaded seg {i} {s['clip']} {len(fr)} -> {len(u)} echte Bilder", flush=True)
+
+_DIS = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_FAST)
+FW, FH = 512, 242
+_gx, _gy = np.meshgrid(np.arange(MW, dtype=np.float32), np.arange(MH, dtype=np.float32))
+
+def _flows(s, a, b):
+    if s["_flow"] is not None and s["_flow"][0] == a: return s["_flow"][1:]
+    ga = cv2.resize(cv2.cvtColor(s["_frames"][a], cv2.COLOR_RGB2GRAY), (FW, FH), interpolation=cv2.INTER_AREA)
+    gb = cv2.resize(cv2.cvtColor(s["_frames"][b], cv2.COLOR_RGB2GRAY), (FW, FH), interpolation=cv2.INTER_AREA)
+    fab = cv2.resize(_DIS.calc(ga, gb, None), (MW, MH)) * (MW / FW)
+    fba = cv2.resize(_DIS.calc(gb, ga, None), (MW, MH)) * (MW / FW)
+    s["_flow"] = (a, fab, fba)
+    return fab, fba
 
 def get_src(s, lt):
     r = float(s["_r"](lt)) - s["_lo"]
-    fi = r * FPS
     n = len(s["_frames"])
-    a = int(math.floor(fi)); fr_ = fi - a
+    fi = r / s["_dt"]
+    a = int(math.floor(fi)); f = fi - a
     a = min(max(a, 0), n - 1); b = min(a + 1, n - 1)
-    if fr_ < 0.15 or a == b: return s["_frames"][a]
-    if fr_ > 0.85: return s["_frames"][b]
-    return cv2.addWeighted(s["_frames"][a], 1 - fr_, s["_frames"][b], fr_, 0)
+    if a == b or f < 0.06: return s["_frames"][a]
+    if f > 0.94: return s["_frames"][b]
+    if a < len(s["_cut"]) and s["_cut"][a]: return s["_frames"][a] if f < 0.5 else s["_frames"][b]
+    fab, fba = _flows(s, a, b)
+    # Rückwärts-Warp: Bild a um f entlang des Flusses, Bild b um (1-f) zurück, dann mischen
+    wa = cv2.remap(s["_frames"][a], _gx + fba[..., 0] * f, _gy + fba[..., 1] * f, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+    wb = cv2.remap(s["_frames"][b], _gx + fab[..., 0] * (1 - f), _gy + fab[..., 1] * (1 - f), cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+    return cv2.addWeighted(wa, 1 - f, wb, f, 0)
 
 # band shadow / vignette / grain (precomputed)
 yy = np.arange(H)[:, None].astype(np.float32)
@@ -476,6 +507,6 @@ def render_frame(n):
     if lk is not None: fr = 1 - (1 - fr) * (1 - np.clip(lk, 0, 1))   # screen
     if fl > 0.01: fr = fr * (1 - fl) + fl
     fr *= VIG
-    fr += GRAIN[n % 4] * 0.022
+    fr += GRAIN[n % 4] * 0.012
     return (np.clip(fr, 0, 1) * 255 + 0.5).astype(np.uint8)
 
