@@ -227,6 +227,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 | 4 | 08.11. | 11 (+55,9 % laut Dashboard) | 30,229 | 1,337 | Rework GEBAUT + veröffentlicht (games-API updated 07.11. 18:48 UTC): cc4_tt Auto-Skip/Wände · cc4_yt 3 Zahlen, Rute=Power/Haken=Luck · cc4_m2 Freunde-Boost + Welt 2 |
 | 5 | 09.11. | 10 (-1, Dashboard 8,2 %) | 30,977 | 1,365 | A-Paket (geschrieben, NICHT eingebaut): cc5_tt Geschenk-Truhe · cc5_yt FTUE-Funnel · cc5_m2 Robux-Ranglisten weg -> Skips Today |
 | 6 | 10.11. | **5** (-50,1 % laut Dashboard) | 31,260 | 1,374 | ehrlich "halbiert": cc6_tt nicht aufgeben + nächstes Update (Truhe/faire Ranglisten) · cc6_yt danach WELT 2 · cc6_m2 Danke + Besuche/Favoriten |
+| 7 | 11.11. | **2** (-56,4 % laut Dashboard) | 31,419 | 1,382 | Comeback-Plan (NICHT veröffentlicht, games-API updated 08.11.): cc7_tt Classic is back · cc7_yt Legends of the Deep · cc7_m2 Sichtungen jede halbe Stunde + Classic |
 
 ## Day-X "updating my Roblox game every day"
 - Mtrix-YT + mtfgams12: Day 1 = 5.11., **Day 2 = 6.11.** (dx_yc Fish Rush/Meteor, dx_n Ziel-Silhouette) -> Day 3 = 7.11.
@@ -237,6 +238,8 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 
 - 09.11. (AE-Style): Mtrix-YT/mtfgams12 **Day 5** (dx5_yc erste Minute: Truhe + LUCKY! + Skips Today, dx5_n Skips Today/Top Power); B-TT/B-YT/C-TT/C-IG **Day 4** (dx4_b Ranglisten, dx4_yb Geschenk-Truhe, dx4_c 11-Schritte-Funnel, dx4_ic +N-Pool gegen Lag). Quelle git 17e65c2 A-Paket (nur Code+Tests, nicht eingebaut -> "coded / next update"). Nächster Tag: Day 6 bzw. Day 5.
 - 10.11. (AE high-end): Mtrix-YT/mtfgams12 **Day 6** (dx6_yc Plan Welt 2 + Idee Upside Down Sea, dx6_n Combo bis x3); B-TT/B-YT/C-TT/C-IG **Day 5** (dx5_b Rod Stars 5x +8 %, dx5_yb Big Rank +10 % für immer, dx5_c Freunde-Boost +10 %/Freund max 4, dx5_ic Zone Mastered +10 % Geld + Welcome back). Keine neuen Spiel-Commits seit A-Paket -> je ein echtes, veröffentlichtes R2-Feature erklärt. Nächster Tag: Day 7 bzw. Day 6 (R2-Features übrig: Meisterung/Pech-Schutz "1 in X", Starter-Pack-Wand, Smart-Pfeil, Bank +N/s; sonst A-Paket eingebaut?).
+
+- 11.11. (AE high-end): Mtrix-YT/mtfgams12 **Day 7** (dx7_yc Legends of the Deep, 4 Legenden, dx7_n Classic kommt zurück + kein Reset + ASMR-Sounds); B-TT/B-YT/C-TT/C-IG **Day 6** (dx6_b Legenden-Sichtungen alle 30 min x2, dx6_yb 3-Runden-Kampf + Trophäen-Wand, dx6_c Classic+ mit Power-Leiste/PERFECT, dx6_ic ASMR-Sounds). Quelle git 10.11. (Classic+, Legends, Legends Polish, ASMR) – alles NICHT veröffentlicht -> "coded / next update". Nächster Tag: Day 8 bzw. Day 7 (veröffentlicht? games-API "updated" prüfen; dann "now live"). Keine Legenden-Aufnahmen -> Legenden-Videos zeigen nur allgemeine Fänge; NEUE AUFNAHMEN (Legende gesichtet, Kampf, Trophäen-Wand) beim User anfragen.
 
 **promo\clips am 06.11. benutzt (102 Clips, alle mit neuen Startzeiten):** siehe `days/k_1106.py`. Bibliothek ist seit 5.11. komplett mehrfach
 benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fish Rush, Meteor, Got away, Zonen-Leiste, Morgen-Karte).
@@ -293,6 +296,7 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
 | 07.11. | alle 9 | k07_* (18 Clean) + cc3_* (CCU Day 3) + dx2_*/dx3_* | Clean/Day-X | – | – | – | Musik *_0711_* (11 neue Varianten), Metricool-Zahlen wieder nicht geholt (Limit sparen) |
 | 09.11. | alle 9 | k09_* (18 Clean) + cc5_* (CCU Day 5) + dx4_*/dx5_* | AE-Style | – | – | – | erster AE-Tag (ae.py), Musik *_0911_* (6 neu) + *_0811_*; Metricool-Zahlen nicht geholt (Limit) |
 | 10.11. | alle 9 | k10_* (18 Clean) + cc6_* (CCU Day 6) + dx5_*/dx6_* | AE high-end | – | – | – | Musik *_1011_* (6 neu) + 0911/0811; Metricool-Zahlen nicht geholt (Limit) |
+| 11.11. | alle 9 | k11_* (18 Clean, Themen rotiert) + cc7_* (CCU Day 7) + dx6_*/dx7_* | AE high-end | – | – | – | Musik *_1111_* (6 neu) + 1011/0911; Metricool-Zahlen nicht geholt (Limit) |
 | 08.11. | alle 9 | k08_* (18 Clean) + cc4_* (CCU Day 4) + dx3_*/dx4_* | Clean/Day-X | – | – | – | Musik *_0811_* (11 neue Varianten); erstes Thema = echter Rework; Metricool-Zahlen nicht geholt (Limit sparen) |
 
 **promo\clips am 02.11. benutzt (nächste Tage andere nehmen):** koi2_leap_counter, koi_seq_1, koi_seq_3, koi2_pillars, koi2_splash_hover,
@@ -353,3 +357,5 @@ g_pink_pillar_fishing. **Alles in der Bibliothek ist jetzt mindestens einmal ben
 **promo\clips am 09.11. benutzt (136 Clips, AE-Style):** siehe `tools/promo/ae/days/ae_1109.py`. Weiter nur ALTES Spiel -> Rework-Aufnahmen (Auto-Skip, 3 Zahlen, Bank, Zonen-Wände, Geschenk-Truhe) dringend (RECORDING.md).
 **promo\clips am 10.11. benutzt (97 Clips, High-End: 3–4 Beats, 5–7 Shots, ein Thema je Video):** siehe `days/ae_1110.py`.
 - Clip-Hinweise 10.11.: whale_chase_1 + whale2_title im AE-Band fast schwarz (Nacht) -> als Clean Edit zu dunkel (k10_ya1 ersetzt durch Tag-Tour); Bugfix ae.py Karaoke (groups[-2] += groups.pop() -> IndexError bei kurzen Sätzen).
+**promo\clips am 11.11. benutzt (97 Clips, Themen je Konto rotiert gegenüber 10.11.):** siehe `days/ae_1111.py`.
+- Clip-Hinweise 11.11.: g_hold_confetti zeigt eine Moonlotus-Karte (nicht Golden Shark!) -> Text nicht "GOLDEN SHARK"; koi2_splash_hover ab ~3,5 s weiß; ancient_hold 0,5 s rot (Vollbild); g_huge_rising ab ~1,5 s weißer Blitz; g_hud_golden_shark ~2,5 s weißer Ausbruch; golden_shark_reveal nur ab 2,95 s für 2 Beats; g_casts_* zeigen meist GOOD! statt PERFECT! -> keine "PERFECT"-Texte darauf.
