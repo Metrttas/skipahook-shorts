@@ -3,6 +3,8 @@
 User 2026-10-30 12:30: "bau dir ein Gedächtnis auf, was viral gehen könnte … jeden Tag 8 Videos posten".
 Vor jedem neuen Video-Tag LESEN, nach jedem Tag die Tabelle "Was lief" ergänzen (Metricool-Analytics).
 
+**AB 11.11.: docs/plans/VIDEO_PLAN_V2.md zuerst lesen (Diagnose 631 Views/1 Like, neue Regeln, Like-Moment-Formate, Aufnahme-Liste).**
+
 ## Was 2026 funktioniert (Recherche 30.10.)
 - **Hook in 1–3 s**, nie langsam anfangen, kein reiner Text-Anfang. Muster:
   - *Mitten in der Action*: das Highlight zuerst (Wal springt, Kraken-Gesicht), Erklärung danach.
@@ -228,6 +230,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 | 5 | 09.11. | 10 (-1, Dashboard 8,2 %) | 30,977 | 1,365 | A-Paket (geschrieben, NICHT eingebaut): cc5_tt Geschenk-Truhe · cc5_yt FTUE-Funnel · cc5_m2 Robux-Ranglisten weg -> Skips Today |
 | 6 | 10.11. | **5** (-50,1 % laut Dashboard) | 31,260 | 1,374 | ehrlich "halbiert": cc6_tt nicht aufgeben + nächstes Update (Truhe/faire Ranglisten) · cc6_yt danach WELT 2 · cc6_m2 Danke + Besuche/Favoriten |
 | 7 | 11.11. | **2** (-56,4 % laut Dashboard) | 31,419 | 1,382 | Comeback-Plan (NICHT veröffentlicht, games-API updated 08.11.): cc7_tt Classic is back · cc7_yt Legends of the Deep · cc7_m2 Sichtungen jede halbe Stunde + Classic |
+| 8 | 12.11. | **4** (+79,1 % laut Dashboard) | 31,647 | 1,394 | Legends/Classic+ LIVE (games-API updated 10.11. 23:22 UTC): cc8_tt Coral Empress entkommt · cc8_yt Legends live + Welt 2 Storm Sea · cc8_m2 Sichtungen jede halbe Stunde + Big Bertha |
 
 ## Day-X "updating my Roblox game every day"
 - Mtrix-YT + mtfgams12: Day 1 = 5.11., **Day 2 = 6.11.** (dx_yc Fish Rush/Meteor, dx_n Ziel-Silhouette) -> Day 3 = 7.11.
@@ -238,8 +241,8 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 
 - 09.11. (AE-Style): Mtrix-YT/mtfgams12 **Day 5** (dx5_yc erste Minute: Truhe + LUCKY! + Skips Today, dx5_n Skips Today/Top Power); B-TT/B-YT/C-TT/C-IG **Day 4** (dx4_b Ranglisten, dx4_yb Geschenk-Truhe, dx4_c 11-Schritte-Funnel, dx4_ic +N-Pool gegen Lag). Quelle git 17e65c2 A-Paket (nur Code+Tests, nicht eingebaut -> "coded / next update"). Nächster Tag: Day 6 bzw. Day 5.
 - 10.11. (AE high-end): Mtrix-YT/mtfgams12 **Day 6** (dx6_yc Plan Welt 2 + Idee Upside Down Sea, dx6_n Combo bis x3); B-TT/B-YT/C-TT/C-IG **Day 5** (dx5_b Rod Stars 5x +8 %, dx5_yb Big Rank +10 % für immer, dx5_c Freunde-Boost +10 %/Freund max 4, dx5_ic Zone Mastered +10 % Geld + Welcome back). Keine neuen Spiel-Commits seit A-Paket -> je ein echtes, veröffentlichtes R2-Feature erklärt. Nächster Tag: Day 7 bzw. Day 6 (R2-Features übrig: Meisterung/Pech-Schutz "1 in X", Starter-Pack-Wand, Smart-Pfeil, Bank +N/s; sonst A-Paket eingebaut?).
-
 - 11.11. (AE high-end): Mtrix-YT/mtfgams12 **Day 7** (dx7_yc Legends of the Deep, 4 Legenden, dx7_n Classic kommt zurück + kein Reset + ASMR-Sounds); B-TT/B-YT/C-TT/C-IG **Day 6** (dx6_b Legenden-Sichtungen alle 30 min x2, dx6_yb 3-Runden-Kampf + Trophäen-Wand, dx6_c Classic+ mit Power-Leiste/PERFECT, dx6_ic ASMR-Sounds). Quelle git 10.11. (Classic+, Legends, Legends Polish, ASMR) – alles NICHT veröffentlicht -> "coded / next update". Nächster Tag: Day 8 bzw. Day 7 (veröffentlicht? games-API "updated" prüfen; dann "now live"). Keine Legenden-Aufnahmen -> Legenden-Videos zeigen nur allgemeine Fänge; NEUE AUFNAHMEN (Legende gesichtet, Kampf, Trophäen-Wand) beim User anfragen.
+- 12.11. (AE high-end): Mtrix-YT/mtfgams12 **Day 8** (dx8_yc Legends LIVE, Sichtungen x2, Bertha gefangen/Empress entkommen; dx8_n Welt 2 Storm Sea begonnen, 64 Fische/8 Zonen, geschlossen bis fertig); B-TT/B-YT/C-TT/C-IG **Day 7** (dx7_b HUD-Gruppen 5 Menüs, dx7_yb neue Rolle mit Zeiger statt Spammen, dx7_c PERFECT sofort + Streak, dx7_ic Update-Log). Quelle git 10.–11.11.; HUD-Gruppen/Update-Log/Welt 2 NICHT veröffentlicht -> "next update". Erstmals echte Legenden-Clips (lg_bertha_caught, lg_empress_hooked, lg_empress_escape) als Like-Moment ("one click away", "would you rage?"). Nächster Tag: Day 9 bzw. Day 8.
 
 **promo\clips am 06.11. benutzt (102 Clips, alle mit neuen Startzeiten):** siehe `days/k_1106.py`. Bibliothek ist seit 5.11. komplett mehrfach
 benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fish Rush, Meteor, Got away, Zonen-Leiste, Morgen-Karte).
@@ -297,6 +300,7 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
 | 09.11. | alle 9 | k09_* (18 Clean) + cc5_* (CCU Day 5) + dx4_*/dx5_* | AE-Style | – | – | – | erster AE-Tag (ae.py), Musik *_0911_* (6 neu) + *_0811_*; Metricool-Zahlen nicht geholt (Limit) |
 | 10.11. | alle 9 | k10_* (18 Clean) + cc6_* (CCU Day 6) + dx5_*/dx6_* | AE high-end | – | – | – | Musik *_1011_* (6 neu) + 0911/0811; Metricool-Zahlen nicht geholt (Limit) |
 | 11.11. | alle 9 | k11_* (18 Clean, Themen rotiert) + cc7_* (CCU Day 7) + dx6_*/dx7_* | AE high-end | – | – | – | Musik *_1111_* (6 neu) + 1011/0911; Metricool-Zahlen nicht geholt (Limit) |
+| 12.11. | alle 9 | k12_* (18 Clean, 5 mit Legenden-Clips) + cc8_* (CCU Day 8) + dx7_*/dx8_* | AE high-end | – | – | – | Musik *_1211_* (6 neu) + 1111/1011; Metricool-Zahlen nicht geholt (Limit) |
 | 08.11. | alle 9 | k08_* (18 Clean) + cc4_* (CCU Day 4) + dx3_*/dx4_* | Clean/Day-X | – | – | – | Musik *_0811_* (11 neue Varianten); erstes Thema = echter Rework; Metricool-Zahlen nicht geholt (Limit sparen) |
 
 **promo\clips am 02.11. benutzt (nächste Tage andere nehmen):** koi2_leap_counter, koi_seq_1, koi_seq_3, koi2_pillars, koi2_splash_hover,
@@ -357,5 +361,9 @@ g_pink_pillar_fishing. **Alles in der Bibliothek ist jetzt mindestens einmal ben
 **promo\clips am 09.11. benutzt (136 Clips, AE-Style):** siehe `tools/promo/ae/days/ae_1109.py`. Weiter nur ALTES Spiel -> Rework-Aufnahmen (Auto-Skip, 3 Zahlen, Bank, Zonen-Wände, Geschenk-Truhe) dringend (RECORDING.md).
 **promo\clips am 10.11. benutzt (97 Clips, High-End: 3–4 Beats, 5–7 Shots, ein Thema je Video):** siehe `days/ae_1110.py`.
 - Clip-Hinweise 10.11.: whale_chase_1 + whale2_title im AE-Band fast schwarz (Nacht) -> als Clean Edit zu dunkel (k10_ya1 ersetzt durch Tag-Tour); Bugfix ae.py Karaoke (groups[-2] += groups.pop() -> IndexError bei kurzen Sätzen).
+
 **promo\clips am 11.11. benutzt (97 Clips, Themen je Konto rotiert gegenüber 10.11.):** siehe `days/ae_1111.py`.
 - Clip-Hinweise 11.11.: g_hold_confetti zeigt eine Moonlotus-Karte (nicht Golden Shark!) -> Text nicht "GOLDEN SHARK"; koi2_splash_hover ab ~3,5 s weiß; ancient_hold 0,5 s rot (Vollbild); g_huge_rising ab ~1,5 s weißer Blitz; g_hud_golden_shark ~2,5 s weißer Ausbruch; golden_shark_reveal nur ab 2,95 s für 2 Beats; g_casts_* zeigen meist GOOD! statt PERFECT! -> keine "PERFECT"-Texte darauf.
+
+**promo\clips am 12.11. benutzt (64 Clips + 3 Legenden-Clips lg_*):** siehe `days/ae_1112.py`.
+- Clip-Hinweise 12.11.: **c25_cosmicsea_* ist ein Standbild** (aecore: 102 -> 1 echte Bilder = eingefroren) -> nicht verwenden; t_zones_skyisland ist NACHT (passt nicht zu c19 Tag); lg_empress_hooked nur 6 s (0–1 PERFECT-Wurf Eis, 2–4 THE CORAL EMPRESS/EXOTIC BITE, 5–6 Rolle am Steg), lg_empress_escape 3,5 s (Platscher, leerer Steg), lg_bertha_caught 12,5 s (0–1 Kampf am Steg "BIG BERTHA IS TIRED", 3–12 LEGEND CAUGHT-Karte). Weitere Legenden-Aufnahmen (Frostjaw, Old Whiskers, Sichtung mit Flosse) wären stark.
