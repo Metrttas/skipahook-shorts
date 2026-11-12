@@ -91,8 +91,8 @@ VIDEOS = {
         ("Day eight on my road to one thousand players.", [('c22_endgate_long', 1.0)], 'DAY *8'),
         ("The average went up from two to four.", [('c19_islands_long', 2.0)], '*4 PLAYERS', {'prog': True}),
         ("Legends are live now. Big Bertha already got caught.", [('lg_bertha_caught', 3.0)], 'LEGENDS *ARE LIVE', {'sfx': 'record'}),
-        ("Next I'm building world two, the Storm Sea. Sixty four new fish.", [('c18_galleon_long', 3.0), ('c24_rift_long', 2.0)], '*WORLD 2'),
-        ("What fish should live there? Comment it. See you on day nine!", [('c22_endgate_long', 6.0)], '')]),
+        ("Next is world two. You voted on Discord: the Open Sea. Your own boat, and fish you hunt.", [('c30_boat', 3.0), ('c18_galleon_long', 3.0)], 'OPEN *SEA'),
+        ("What should be on the first island? Comment it. See you on day nine!", [('c22_endgate_long', 6.0)], '')]),
     'tk_ya2': dict(speed=0.88, amb='night', lines=[
         ("Pick a number. One, two, or three.", [('c14_lake_long', 1.0)], 'PICK *1, 2 OR 3'),
         ("Put it in the comments first. No cheating.", [('g_casts_dock', 2.0)], 'NO *CHEATING'),
@@ -229,9 +229,10 @@ VIDEOS = {
         ("Did you win? Search Skip a Hook on Roblox.", [('g_casts_perfect', 5.0)], '')]),
     'dx8_n': dict(speed=0.85, amb='day', lines=[
         ("Day eight of updating my Roblox game every day.", [('c14_lake_long', 3.0)], 'DAY *8'),
-        ("Today I started world two. The Storm Sea.", [('c18_galleon_long', 1.0)], 'STORM *SEA'),
-        ("Sixty four new fish in eight zones, storm rods, and thunderstorms.", [('c24_rift_long', 4.0), ('c18_galleon_long', 6.0)], '*64 FISH'),
-        ("It stays closed until it's really finished. What fish should live there? See you on day nine!", [('c14_lake_long', 7.0)], '')]),
+        ("You voted on Discord, so world two is now the Open Sea.", [('c30_boat', 1.0)], 'OPEN *SEA'),
+        ("Your own boat, islands, and fish schools you can find with a sonar.", [('c30_boat', 6.0), ('c19_islands_long', 2.0)], '*YOUR BOAT'),
+        ("I coded the first part today. It stays closed until it's really good.", [('c18_galleon_long', 2.0)], 'NOT *YET'),
+        ("What boat should I add first? Comment it. See you on day nine!", [('c14_lake_long', 7.0)], '')]),
     'tk_n2': months(
         ("The month you were born decides your fish.", [('g_casts_perfect', 3.0)], 'YOUR MONTH = *YOUR FISH', {'sfx': 'cast_full'}),
         ['koi', 'goldfish', 'bertha', 'gshark', 'paddle', 'meg', 'whale', 'empress', 'lotus', 'dragon', 'nova', 'colossal'],
