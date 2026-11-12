@@ -1,5 +1,7 @@
 # Skip a Hook – Viral-Gedächtnis für Shorts (TikTok + YouTube)
 
+**AB 12.11.: NUR NOCH REDE-VIDEOS (Abschnitt "TALK-Format ab 12.11.", tools/promo/talk/talk.py). Keine Clean Edits, keine fresh_beats-Musik, keine ae.py-Videos mehr posten.**
+
 User 2026-10-30 12:30: "bau dir ein Gedächtnis auf, was viral gehen könnte … jeden Tag 8 Videos posten".
 Vor jedem neuen Video-Tag LESEN, nach jedem Tag die Tabelle "Was lief" ergänzen (Metricool-Analytics).
 
@@ -192,7 +194,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
   lagoon, temple. Schwach (dunkel): lake, galleon, mast. Formate damit: "Every zone in 15 seconds", "This game is HUGE" (Muster
   `s_world`), "Rate my base 1–10", "Which zone would you fish in? 1/2/3", Pete/Aquarium/Enchant-Feature-Videos.
 
-## AE-Style ab 9.11. (User 08.11.: ALLE Videos so "fresh" wie SkipAHook_Beispiel_AE.mp4 – ersetzt den clean.py-Look)
+## AE-Style ab 9.11. – **ABGELÖST am 12.11. durch das TALK-Format (User: nur noch Rede-Videos, keine Musik-Edits, keine eigenen Sounds) -> Abschnitt "TALK-Format ab 12.11." benutzen, auch wenn der Routine-Text noch ae.py nennt** (User 08.11.: ALLE Videos so "fresh" wie SkipAHook_Beispiel_AE.mp4 – ersetzt den clean.py-Look)
 - **Werkzeug:** `tools/promo/ae/ae.py <tagesdatei> <id|all> stills|render` (Kopf = Format), Kern `aecore.py` (= promo\beispiel_2026-11-08\ae\render.py
   konfigurierbar gemacht). Tagesdatei `tools/promo/ae/days/ae_MMDD.py` (Muster `ae_1109.py`, enthält auch POST_PLAN), Texte `posts_MMDD.json`.
   Look: Spielbild-Band 1350 breit (y 642–1278) auf Blur-Hintergrund, Kopfzeile y 505 (Spring-Wörter, *GOLD), Karaoke y 1345, Whip/Zoom-Übergänge mit
@@ -219,6 +221,21 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
   `hook_y=1150, end_y=1120`. c09_wheel_* "SPIN!"-Knopf unten (nicht unter Untertitel). c12_garage_long ab 2–5 s weiß überstrahlt,
   c01_mapfly_long1 Anfang weiß, t_main_walkup 0–1,2 s schwarz, c13_pete_long 4 s gelbe Nahaufnahme, c06_dock_long 9 s Pfosten-Nahaufnahme.
   g_huge_rising/koi_seq_2 haben eigene Untertitel-Leiste unten ("Something HUGE is rising…"). Day-Videos ~-19 LUFS (etwas leise).
+
+## TALK-Format ab 12.11. (User 12.11. 01:50: AE-Edits "tot/sloppy", eigene Sounds "scheiße" -> NUR NOCH REDE-VIDEOS mit Like/Share-Ideen)
+- **Werkzeug:** `tools/promo/talk/talk.py <tagesdatei> <ids|all> stills|render` (Kopf = Format), Tagesdatei `tools/promo/talk/days/t_MMDD.py`
+  (Muster t_1112.py, Fisch-Tabelle F mit Clip/Start/Name/Seltenheit + POST_PLAN), Texte `posts_tMMDD.json`. Render ~7 min je Video (2 parallel,
+  ohne timeout im Hintergrund: /home/claude/runtalk.sh-Muster). ae.py/fresh_beats NICHT mehr für Posts benutzen.
+- **Look:** großes Spielbild-Band y 590–1290, Kopfzeile y 505, Like/Follow/Comment/Share/All-4-Leiste y 272 (Symbole leuchten nacheinander),
+  Fisch-Schild (Name + Seltenheit) unten im Band, Karaoke y 1345, Endkarte nur die letzten 2,4 s auf dem Anfangs-Clip (Zeitlupe, Loop).
+- **Ton:** NUR Stimme (am_puck 0.85–0.92) + echte Spiel-Töne (`tools/audio/asmr_sfx.py` -> out/sfx/wav: reveal1–4 je Stufe, record = Legende,
+  bite/reel/splash/miss/ui_pop/ui_tick) + Spiel-Atmo (`tools/audio/ambience.py`, waves + day/night). Keine Musik, keine synthetischen Whoosh/Impacts.
+- **Formate:** L Like-Leiter ("like = Golden Shark … all 4 = legend"), M Geburtsmonat = dein Fisch (1 Monat = Paddlefish als Gag),
+  P "Stop the video/Screenshot" (Fische blitzen 0,2 s), R Legende entkommt -> "send this to the friend who would rage", K Pick 1/2/3 (eine Niete),
+  Rate-my-catch 1–10. Serien (CCU/Day-X) bleiben, enden mit Kommentar-Frage. "Nur Spaß" (User): "this is YOUR fish", kein echtes Versprechen.
+- **12.11.:** 27 AE-Posts in Metricool auf Entwurf gesetzt (draft=true, IDs in /home/claude/metricool_1112_ids.json), durch t_1112 ersetzt.
+- Clip-Hinweise: koi_hover 0–0,4 s weiß + ab 2,8 s rot (Karte); golden_shark_reveal 2,0–2,9 s weiß; g_paddlefish_card Karte erst ab 6,1 s;
+  Clips < Satzlänge -> talk.py macht automatisch Zeitlupe (max 0,5x).
 
 ## CCU-Serie ("Day N of trying to reach 1,000 CCU", YT M&D + YT Rblxcntnt + TikTok @rotaztz11)
 | Day | Datum | Average CCU (Dashboard, letzter Tag) | Besuche | Favoriten | Thema |
