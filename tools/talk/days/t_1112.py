@@ -1,244 +1,235 @@
-# Tagesdatei 12.11.2026 – NEU: nur Rede-Videos (User 12.11. 01:50 "red nur noch in den Videos … bring Leute zum Liken/Teilen …
-#   wenn du likest kriegst du den Fisch … keine eigenen Sounds"). 27 Videos ersetzen die AE-Videos (ae_1112, in Metricool als Entwurf).
+# Tagesdatei 12.11.2026 – TALK-Format, 2. Fassung (User 12.11. ~05:00: "Skripte machen manchmal keinen Sinn, denk nach … Stop-Spiel: Fische
+#   viel zu schnell, keiner reagiert so schnell … Like/Follow-Leiter ok … Legenden-Clips NICHT benutzen, da ist ein Pop-up, man sieht den Fisch nicht").
 #   python3 tools/promo/talk/talk.py tools/promo/talk/days/t_1112.py all stills|render
-# Formate (je Konto verschieden, Fisch-Reihenfolge/Wortlaut je Variante neu; "nur Spaß": "this is YOUR fish", kein echtes Versprechen):
-#   L = Like/Follow/Comment/Share-Leiter ("all 4 = legend"), M = Geburtsmonat = dein Fisch, P = "Stop the video" (Bilder blitzen),
-#   R = Legende entkommt -> "send this to the friend who would rage", K = Pick 1, 2 or 3.
-# Serien: CCU Day 8 (Average 4, gestern 2, Besuche 31,647) + Day-X 7/8 (Inhalte wie ae_1112, jetzt mit Kommentar-Frage am Ende).
-# Ton: Stimme am_puck + echte Spiel-Töne (asmr_sfx) + Spiel-Atmo; keine Musik.
+# Regeln dieser Fassung:
+#   - KEINE lg_*-Clips (LEGEND-CAUGHT-Karte verdeckt den Fisch). Nur Momente, in denen der Fisch groß und klar zu sehen ist (Tabelle F, mit 'max' =
+#     Ende des sauberen Fensters, danach Blitz/Karte).
+#   - Fisch-Schild zeigt die ECHTEN Chancen aus dem Spiel (Kontaktbogen 12.11.): Supernova Shark 1 in 100, Golden Shark 1 in 50,000,
+#     Prehistoric Megalodon 1 in 100,000, Cosmic Dragon 1 in 100,000, Giant Blue Whale 1 in 500,000, Cosmic Koi 1 in 10,000,000,
+#     Moonlotus Dragon 1 in 100,000,000. Leiter steigt immer in der Seltenheit (logisch: mehr tun = besserer Fisch).
+#   - Stop-Spiel: jeder Fisch 1,3 s mit Namens-Schild ('hold' verlängert die Stille nach "Go!").
+#   - "Geburtsmonat": 4 Gruppen à 3 Monate statt 12 Monate (es gibt keine 12 verschiedenen sauberen Fisch-Clips).
+# Serien: CCU Day 8 (Average 4, gestern 2, Besuche 31,647) + Day-X 7/8. dx7_b, dx7_ic, dx8_n aus Fassung 1 unverändert (keine Legenden-Clips).
 
-# Fisch-Momente (Clip, Start, Name, Seltenheit) – Zeiten aus Kontaktbögen 12.11.
 F = {
-    'gshark': ('golden_shark_reveal', 0.1, 'GOLDEN SHARK', 'SECRET'),
-    'nova': ('far_supernova', 5.0, 'SUPERNOVA SHARK', 'SECRET'),
-    'nova2': ('far2_supernova', 3.6, 'SUPERNOVA SHARK', 'SECRET'),
-    'meg': ('ancient_reveal', 0.8, 'PREHISTORIC MEGALODON', 'ANCIENT'),
-    'lotus': ('g_ethereal_moonlotus', 0.5, 'MOONLOTUS DRAGON', 'ETHEREAL'),
-    'koi': ('koi_hover', 0.5, 'COSMIC KOI', 'SEA GIANT'),
-    'whale': ('whale_title', 1.5, 'GIANT BLUE WHALE', 'SEA GIANT'),
-    'dragon': ('cosmic_dragon_reveal', 3.2, 'COSMIC DRAGON', 'SECRET'),
-    'colossal': ('g_hud_colossal_meg', 3.6, 'COLOSSAL MEGALODON', 'SECRET'),
-    'paddle': ('g_paddlefish_card', 4.3, 'PADDLEFISH', 'COMMON'),
-    'goldfish': ('g_mutation_goldfish', 3.8, 'GOLDFISH', 'GOLD'),
-    'bertha': ('lg_bertha_caught', 3.2, 'BIG BERTHA', 'LEGEND'),
-    'empress': ('lg_empress_hooked', 2.0, 'THE CORAL EMPRESS', 'LEGEND'),
+    'nova': ('far_supernova', 5.0, 'SUPERNOVA SHARK', '1 IN 100', 7.6),
+    'nova2': ('far2_supernova', 4.2, 'SUPERNOVA SHARK', '1 IN 100', 5.9),
+    'gshark': ('golden_shark_reveal', 0.1, 'GOLDEN SHARK', '1 IN 50,000', 1.9),
+    'gshark_hold': ('golden_shark_reveal', 2.95, 'GOLDEN SHARK', '1 IN 50,000', 4.15),
+    'meg': ('ancient_reveal', 0.7, 'PREHISTORIC MEGALODON', '1 IN 100,000', 3.3),
+    'dragon': ('cosmic_dragon_reveal', 3.1, 'COSMIC DRAGON', '1 IN 100,000', 5.35),
+    'whale': ('t_main_whale_jump', 0.3, 'GIANT BLUE WHALE', '1 IN 500,000', 1.98),
+    'koi': ('koi2_splash_hover', 4.6, 'COSMIC KOI', '1 IN 10,000,000', 6.7),
+    'koi_b': ('koi_hover', 0.45, 'COSMIC KOI', '1 IN 10,000,000', 2.7),
+    'lotus': ('g_ethereal_moonlotus', 0.45, 'MOONLOTUS DRAGON', '1 IN 100,000,000', 2.65),
+    'goldfish': ('g_mutation_goldfish', 3.9, 'GOLDFISH', 'GOLD MUTATION', 5.6),
+    'paddle': ('g_paddlefish_card', 4.2, 'PADDLEFISH', 'COMMON', 5.5),
 }
 
 
-def fs(k, dt=0.0):
-    c, s, n, r = F[k]
-    return [(c, s + dt)], (n, r)
+def shot(k, tag=True):
+    c, s, n, r, mx = F[k]
+    o = {'max': mx}
+    if tag: o['fish'] = (n, r)
+    return (c, s, o)
 
 
-def ladder(lines_txt, fish, heads, end_txt):
-    """L: 4 Stufen + 'all four' Legende."""
-    out = []
-    for i, (txt, k, hd) in enumerate(zip(lines_txt, fish, heads)):
-        shots, nm = fs(k)
-        o = {'tier': i, 'fish': nm}
-        if i == 4: o['sfx'] = 'splash'
-        out.append((txt, shots, hd, o))
-    out.append((end_txt, fs(fish[0], 0.4)[0], ''))
-    return dict(ladder=True, speed=0.88, amb='night', lines=out)
+def tierline(txt, k, head, tier, extra=None):
+    o = {'tier': tier, 'sfx': 'reveal1'}
+    shots = [shot(k)]
+    if extra: shots.append(shot(extra))
+    return (txt, shots, head, o)
 
 
-def months(intro, order, outro, joke):
-    names = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
-    out = [intro]
-    for m, k in zip(names, order):
-        shots, nm = fs(k)
-        t = f'{m.capitalize()}: {nm[0].title()}.' if k != 'paddle' else f'{m.capitalize()}: a Paddlefish. {joke}'
-        out.append((t, shots, '*' + m, {'fish': nm, 'sfx': 'ui_pop'}))
-    out.append(outro)
-    return dict(speed=0.92, pause=0.25, amb='night', lines=out)
+def ladder(lines, end_txt, labels=None):
+    out = [tierline(t, k, h, i) for i, (t, k, h) in enumerate(lines)]
+    out.append((end_txt, [shot(lines[0][1], False)], ''))
+    v = dict(ladder=True, speed=0.9, amb='night', lines=out)
+    if labels: v['labels'] = labels
+    return v
 
 
-FLICK = ['gshark', 'paddle', 'whale', 'goldfish', 'dragon', 'nova', 'bertha', 'koi', 'meg', 'lotus', 'colossal', 'empress']
+def stop(intro, intro_head, order, after, after_head, end_txt, first='koi_b'):
+    return dict(speed=0.9, amb='night', lines=[
+        (intro, [shot(first, False)], intro_head),
+        ("Ready? Go!", [shot(k) for k in order], 'PAUSE *NOW!', {'flick': True, 'hold': 1.3 * len(order) - 0.6}),
+        (after, [shot('lotus', False)], after_head),
+        (end_txt, [shot(first, False)], '')])
 
 
-def flick(order):
-    return [(F[k][0], F[k][1] + 0.3) for k in order]
+def groups(intro, intro_head, items, end_txt, first_clip=('g_casts_perfect', 0.5)):
+    out = [(intro, [first_clip], intro_head, {'sfx': 'cast_full'})]
+    for txt, head, k in items:
+        out.append((txt, [shot(k)], head, {'sfx': 'ui_pop'}))
+    out.append((end_txt, [first_clip], ''))
+    return dict(speed=0.9, amb='night', lines=out)
+
+
+def pick(intro, intro_head, second, second_head, items, end_txt, first_clip):
+    out = [(intro, [first_clip], intro_head), (second, [(first_clip[0], first_clip[1] + 3.0)], second_head)]
+    for i, (txt, k, bad) in enumerate(items):
+        o = {'sfx': 'miss'} if bad else {'tier': 2 + i % 3}
+        out.append((txt, [shot(k)], f'*{i + 1}', o))
+    out.append((end_txt, [first_clip], ''))
+    return dict(speed=0.9, amb='night', lines=out)
 
 
 VIDEOS = {
     # ================= A fbgam.es · TikTok @rotaztz11
-    'tk_a1': ladder(
-        ["Like this video, and this Golden Shark is yours.", "Follow, and you get a Supernova Shark instead.",
-         "Comment anything, and it's a Cosmic Dragon.", "Share it with a friend, and you get the Giant Blue Whale.",
-         "Do all four... and you get a real legend. Big Bertha."],
-        ['gshark', 'nova', 'dragon', 'whale', 'bertha'],
-        ['LIKE = *YOUR FISH', 'FOLLOW = *BETTER', 'COMMENT = *DRAGON', 'SHARE = *WHALE', 'ALL 4 = *LEGEND'],
-        "Which one did you get? Search Skip a Hook on Roblox."),
+    'tk_a1': ladder([
+        ("Like this video, and this Supernova Shark is yours.", 'nova', 'LIKE = *YOUR FISH'),
+        ("Follow, and you get a Golden Shark. One in fifty thousand.", 'gshark', 'FOLLOW = *BETTER'),
+        ("Comment, and it's a Cosmic Dragon. One in a hundred thousand.", 'dragon', 'COMMENT = *DRAGON'),
+        ("Share it, and the Giant Blue Whale is yours. One in half a million.", 'whale', 'SHARE = *WHALE'),
+        ("Do all four, and you get the rarest fish in my game. The Moonlotus Dragon. One in a hundred million.", 'lotus', 'ALL 4 = *RAREST'),
+    ], "Which one did you get? Skip a Hook, on Roblox."),
     'cc8_tt': dict(prog=(2, 4, 1000), speed=0.85, amb='day', lines=[
-        ("Day eight of trying to reach one thousand players in my Roblox fishing game.", [('c06_dock_long', 2.0)], 'DAY *8'),
-        ("Today's average: four players. That's double yesterday.", [('c04_docktolake_long1', 0.5)], '*4 PLAYERS', {'prog': True}),
-        ("The legends update is out, so I went hunting. I hooked the Coral Empress...", [('lg_empress_hooked', 0.0), ('lg_empress_hooked', 2.0)], 'CORAL *EMPRESS', {'sfx': 'bite'}),
-        ("And she got away. One click away.", [('lg_empress_escape', 0.0), ('lg_empress_escape', 1.2)], 'SHE *GOT AWAY', {'sfx': 'splash'}),
-        ("Can you catch her before me? Tell me in the comments. See you on day nine!", [('c06_dock_long', 6.0)], '')]),
-    'tk_a2': dict(ladder=False, speed=0.9, amb='night', lines=[
-        ("Stop the video at the right moment, and that fish is yours.", [('koi_hover', 0.5), ('golden_shark_reveal', 0.1)], 'STOP THE *VIDEO'),
-        ("Ready? Three, two, one... stop it now!", flick(['gshark', 'paddle', 'whale', 'goldfish', 'dragon', 'nova', 'bertha', 'koi', 'meg', 'lotus', 'colossal']), 'STOP *NOW!', {'flick': True}),
-        ("Got a legend? Lucky. Got the paddlefish? I'm sorry.", [('lg_bertha_caught', 4.0), ('g_paddlefish_card', 5.8)], 'WHAT DID *YOU GET?', {'sfx': 'reveal2'}),
-        ("Comment what you landed on. Search Skip a Hook on Roblox.", [('koi_hover', 0.6)], '')]),
+        ("Day eight of trying to get one thousand players into my Roblox fishing game.", [('c06_dock_long', 2.0)], 'DAY *8'),
+        ("Yesterday, the average was two players. Today, it's four.", [('c04_docktolake_long1', 0.5)], '*4 PLAYERS', {'prog': True}),
+        ("The new legends update is out. Every thirty minutes, a giant legend shows up in the lake.", [('c14_lake_long', 1.0), ('c27_longcast1', 1.0)], 'LEGENDS *ARE OUT', {'sfx': 'bite'}),
+        ("Help me get to one thousand. Play one round, and tell me what you caught. See you on day nine!", [('c06_dock_long', 6.0)], '')]),
+    'tk_a2': stop("Pause the video while the fish are changing. The one you stop on is yours.", 'PAUSE = *YOUR FISH',
+                  ['gshark', 'paddle', 'whale', 'nova', 'dragon', 'goldfish', 'koi'],
+                  "Which one did you get? Tell me in the comments.", 'WHAT DID *YOU GET?',
+                  "Skip a Hook, on Roblox."),
 
     # ================= A fbgam.es · YouTube @MD_58_PDH
-    'tk_ya1': months(
-        ("Your birth month decides your fish in my Roblox game.", [('g_casts_perfect', 0.5)], 'YOUR MONTH = *YOUR FISH', {'sfx': 'cast_full'}),
-        ['gshark', 'nova', 'meg', 'lotus', 'koi', 'whale', 'dragon', 'colossal', 'bertha', 'empress', 'paddle', 'goldfish'],
-        ("Comment your month and your fish. Search Skip a Hook on Roblox.", [('g_casts_perfect', 3.0)], ''),
-        "Sorry."),
+    'tk_ya1': groups("Your birth month decides your fish in my Roblox game.", 'BIRTH MONTH = *YOUR FISH', [
+        ("January, February, March: the Golden Shark.", '*JAN - MAR', 'gshark'),
+        ("April, May, June: the Cosmic Dragon.", '*APR - JUN', 'dragon'),
+        ("July, August, September: the Giant Blue Whale.", '*JUL - SEP', 'whale'),
+        ("October, November, December: the Cosmic Koi. One in ten million.", '*OCT - DEC', 'koi'),
+    ], "Which month are you? Comment it. Skip a Hook, on Roblox."),
     'cc8_yt': dict(prog=(2, 4, 1000), speed=0.85, amb='day', lines=[
         ("Day eight on my road to one thousand players.", [('c22_endgate_long', 1.0)], 'DAY *8'),
         ("The average went up from two to four.", [('c19_islands_long', 2.0)], '*4 PLAYERS', {'prog': True}),
-        ("Legends are live now. Big Bertha already got caught.", [('lg_bertha_caught', 3.0)], 'LEGENDS *ARE LIVE', {'sfx': 'record'}),
+        ("Legends are live now. Four giant fish, each in its own zone.", [('c15_temple_long', 2.0), ('c19_islands_long', 6.0)], 'LEGENDS *ARE LIVE'),
         ("Next is world two. You voted on Discord: the Open Sea. Your own boat, and fish you hunt.", [('c30_boat', 3.0), ('c18_galleon_long', 3.0)], 'OPEN *SEA'),
         ("What should be on the first island? Comment it. See you on day nine!", [('c22_endgate_long', 6.0)], '')]),
-    'tk_ya2': dict(speed=0.88, amb='night', lines=[
-        ("Pick a number. One, two, or three.", [('c14_lake_long', 1.0)], 'PICK *1, 2 OR 3'),
-        ("Put it in the comments first. No cheating.", [('g_casts_dock', 2.0)], 'NO *CHEATING'),
-        ("One: the Cosmic Dragon.", fs('dragon')[0], '*1', {'fish': fs('dragon')[1], 'tier': 2}),
-        ("Two: a Paddlefish. Ouch.", [('g_paddlefish_card', 5.8)], '*2', {'fish': fs('paddle')[1], 'sfx': 'miss'}),
-        ("Three: the Giant Blue Whale.", fs('whale')[0], '*3', {'fish': fs('whale')[1], 'tier': 3}),
-        ("So, what did you get? Search Skip a Hook on Roblox.", [('c14_lake_long', 4.0)], '')]),
+    'tk_ya2': pick("Pick a number. One, two, or three.", 'PICK *1, 2 OR 3',
+                   "Comment it before you see them. No cheating.", 'NO *CHEATING', [
+                       ("One: the Cosmic Dragon.", 'dragon', False),
+                       ("Two: a Paddlefish. Ouch.", 'paddle', True),
+                       ("Three: the Giant Blue Whale.", 'whale', False),
+                   ], "So, what did you get? Skip a Hook, on Roblox.", ('g_casts_dock', 1.0)),
 
     # ================= B mtfgams · TikTok
-    'tk_b1': dict(speed=0.88, amb='night', lines=[
-        ("Quick. Pick one, two, or three.", [('g_casts_perfect', 1.0)], 'PICK *1, 2 OR 3'),
-        ("Type it in the comments before you scroll.", [('g_casts_dock', 5.0)], 'COMMENT *FIRST'),
-        ("One: a Goldfish. Not bad.", fs('goldfish')[0], '*1', {'fish': fs('goldfish')[1], 'tier': 0}),
-        ("Two: the Supernova Shark.", fs('nova')[0], '*2', {'fish': fs('nova')[1], 'tier': 2}),
-        ("Three: the Prehistoric Megalodon.", fs('meg')[0], '*3', {'fish': fs('meg')[1], 'tier': 3}),
-        ("Happy with yours? Search Skip a Hook on Roblox.", [('g_casts_perfect', 4.0)], '')]),
-    'dx7_b': dict(speed=0.85, amb='day', lines=[
-        ("Day seven of updating my Roblox fishing game every day.", [('c06_dock_long', 4.0)], 'DAY *7'),
-        ("The buttons at the top were way too much.", [('c02_basecircle_long', 2.0)], 'TOO *MUCH UI'),
-        ("So I cleaned it up into five groups: shop, upgrades, rewards, collection and social.", [('c03_baserow_long1', 1.0), ('c09_wheel_long', 2.0)], '*5 GROUPS'),
-        ("New buttons unlock slowly while you play. That's the next update.", [('c26_cast_catch', 1.0)], 'NEXT *UPDATE'),
-        ("Cleaner or worse? Tell me in the comments. See you on day eight!", [('c06_dock_long', 8.0)], '')]),
-    'tk_b2': ladder(
-        ["If you like this video, the Moonlotus Dragon is yours.", "Follow me, and you get the Prehistoric Megalodon.",
-         "Leave a comment, and it's the Colossal Megalodon.", "Share it, and you get the Cosmic Koi.",
-         "Do all four, and you get the Coral Empress. A legend."],
-        ['lotus', 'meg', 'colossal', 'koi', 'empress'],
-        ['LIKE = *DRAGON', 'FOLLOW = *MEGALODON', 'COMMENT = *COLOSSAL', 'SHARE = *COSMIC KOI', 'ALL 4 = *LEGEND'],
-        "Tell me which one you got. Skip a Hook, on Roblox."),
+    'tk_b1': pick("Quick. Pick one, two, or three.", 'PICK *1, 2 OR 3',
+                  "Type your number in the comments before you scroll.", 'COMMENT *FIRST', [
+                      ("One: a Goldfish. Not bad.", 'goldfish', True),
+                      ("Two: the Supernova Shark.", 'nova2', False),
+                      ("Three: the Prehistoric Megalodon. One in a hundred thousand.", 'meg', False),
+                  ], "Happy with your number? Skip a Hook, on Roblox.", ('g_casts_perfect', 1.0)),
+    'tk_b2': ladder([
+        ("Every button you press on this video gets you a fish. Like: the Golden Shark.", 'gshark', 'LIKE = *GOLDEN SHARK'),
+        ("Follow: the Prehistoric Megalodon.", 'meg', 'FOLLOW = *MEGALODON'),
+        ("Comment: the Giant Blue Whale.", 'whale', 'COMMENT = *WHALE'),
+        ("Share: the Cosmic Koi. One in ten million.", 'koi', 'SHARE = *COSMIC KOI'),
+        ("All four? The Moonlotus Dragon. One in a hundred million.", 'lotus', 'ALL 4 = *RAREST'),
+    ], "Count your buttons and tell me your fish. Skip a Hook, on Roblox."),
 
     # ================= B mtfgams · YouTube
-    'tk_yb1': dict(speed=0.9, amb='night', lines=[
-        ("Pause the video when I say stop. Whatever you see is your fish.", [('g_hud_golden_shark', 5.0)], 'PAUSE *TO WIN'),
-        ("Ready... stop!", flick(['whale', 'koi', 'paddle', 'nova', 'empress', 'gshark', 'meg', 'goldfish', 'dragon', 'lotus']), '*STOP!', {'flick': True}),
-        ("Missed it? Watch again. It's random every time you try.", [('koi_hover', 0.6)], 'TRY *AGAIN'),
-        ("Comment what you got. Search Skip a Hook on Roblox.", [('g_hud_golden_shark', 5.4)], '')]),
+    'tk_yb1': stop("Tap to pause while the fish change. Whatever you land on is your catch.", 'TAP = *YOUR CATCH',
+                   ['whale', 'goldfish', 'nova', 'koi', 'paddle', 'gshark', 'meg'],
+                   "Missed it? Watch again. Then comment what you got.", 'TRY *AGAIN',
+                   "Skip a Hook, on Roblox."),
     'dx7_yb': dict(speed=0.85, amb='day', lines=[
         ("Day seven of updating my Roblox game every day.", [('c28_reel', 0.5)], 'DAY *7'),
-        ("The old reel fight felt dead. You just had to spam.", [('c26_cast_catch', 4.0)], 'NO MORE *SPAM'),
-        ("So I rebuilt it. A pointer circles the reel. Tap when it hits the gold zone.", [('lg_bertha_caught', 0.0), ('c28_reel', 3.5)], '*GOLD ZONE', {'sfx': 'reel'}),
-        ("Every hit makes it faster. Miss twice, and the fish is gone.", [('lg_empress_hooked', 5.0), ('c29_holdup', 1.0)], 'FASTER *EVERY HIT'),
+        ("The old reel fight felt dead. You could just spam.", [('c26_cast_catch', 4.0)], 'NO MORE *SPAM'),
+        ("So I rebuilt it. A pointer circles the reel, and you tap when it's in the gold zone.", [('c28_reel', 3.5), ('c26_cast_catch', 6.0)], '*GOLD ZONE', {'sfx': 'reel'}),
+        ("Every hit makes it faster. Tap too early, and it's a miss.", [('c29_holdup', 1.0)], 'FASTER *EVERY HIT'),
         ("Too hard, or just right? Comment it. See you on day eight!", [('c28_reel', 4.5)], '')]),
-    'tk_yb2': dict(speed=0.85, amb='day', lines=[
-        ("I was one click away from a legend.", [('lg_empress_hooked', 0.0)], 'ONE CLICK *AWAY', {'sfx': 'cast_full'}),
-        ("Perfect cast. Then the Coral Empress bites.", [('lg_empress_hooked', 1.8)], 'SHE *BIT', {'fish': fs('empress')[1], 'sfx': 'bite', 'tier': 4}),
-        ("I reel her all the way back to the dock...", [('lg_empress_hooked', 4.2)], 'ALMOST...', {'sfx': 'reel'}),
-        ("And she's gone.", [('lg_empress_escape', 0.0)], '*GONE.', {'sfx': 'splash'}),
-        ("Send this to the friend who would rage the hardest.", [('lg_empress_escape', 1.2)], 'SEND THIS *TO HIM'),
-        ("She's still out there. Skip a Hook, on Roblox.", [('lg_empress_hooked', 0.3)], '')]),
+    'tk_yb2': dict(speed=0.88, amb='night', lines=[
+        ("Rate this catch from one to ten.", [('koi2_splash_hover', 0.2, {'max': 1.6})], 'RATE IT *1-10'),
+        ("The Cosmic Koi. One in ten million.", [shot('koi')], '*COSMIC KOI', {'tier': 4, 'sfx': 'record'}),
+        ("It's so big, it floats over the whole dock.", [shot('koi_b', False)], 'TOO *BIG'),
+        ("Be honest. What's your number? Skip a Hook, on Roblox.", [('koi2_splash_hover', 0.2, {'max': 1.6})], '')]),
 
     # ================= C Mtrix · TikTok
-    'tk_c1': dict(speed=0.85, amb='day', lines=[
-        ("Would you rage if this happened to you?", [('lg_empress_hooked', 2.0)], 'WOULD YOU *RAGE?', {'sfx': 'bite'}),
-        ("A legend. The Coral Empress. Right on my line.", [('lg_empress_hooked', 2.6)], '*LEGEND', {'fish': fs('empress')[1], 'tier': 4}),
-        ("Reeling, reeling, almost at the dock...", [('lg_empress_hooked', 4.4)], 'REELING...', {'sfx': 'reel'}),
-        ("Gone. Just gone.", [('lg_empress_escape', 0.0), ('lg_empress_escape', 1.4)], '*GONE', {'sfx': 'splash'}),
-        ("Tag the friend who would throw his phone. Skip a Hook, on Roblox.", [('lg_empress_hooked', 0.2)], '')]),
+    'tk_c1': dict(speed=0.88, amb='night', lines=[
+        ("You just caught a Golden Shark. Do you sell it, or keep it?", [shot('gshark'), shot('gshark_hold', False)], 'SELL OR *KEEP?', {'sfx': 'reveal3'}),
+        ("Sell it, and you get the cash right now.", [shot('gshark_hold', False)], '*SELL', {'sfx': 'coins'}),
+        ("Keep it, and it swims in your aquarium and earns money, even when you're offline.", [('aqua_full_glass', 2.0)], '*KEEP'),
+        ("Comment sell or keep. Skip a Hook, on Roblox.", [shot('gshark', False)], '')]),
     'dx7_c': dict(speed=0.85, amb='day', lines=[
         ("Day seven of updating my Roblox fishing game every day.", [('c27_longcast1', 0.5)], 'DAY *7'),
         ("Your PERFECT used to pop up way too late. Sometimes after the catch.", [('c26_cast_short', 0.5)], 'TOO *LATE', {'sfx': 'cast_soft'}),
-        ("I fixed it. Now it shows the moment your hook lands.", [('lg_empress_hooked', 0.0), ('c27_longcast2', 1.0)], '*INSTANT', {'sfx': 'perfect'}),
+        ("I fixed it. Now it shows the moment your hook lands.", [('c27_longcast2', 1.0), ('c26_cast_short', 2.0)], '*INSTANT', {'sfx': 'perfect'}),
         ("And it counts your streak. What's your best streak? Comment it. See you on day eight!", [('c27_longcast1', 5.0)], '')]),
-    'tk_c2': months(
-        ("Your birthday month is your fish. Let's see what you got.", [('g_casts_dock', 1.0)], 'BIRTH MONTH = *FISH', {'sfx': 'cast_full'}),
-        ['whale', 'dragon', 'paddle', 'bertha', 'nova', 'goldfish', 'empress', 'koi', 'gshark', 'colossal', 'lotus', 'meg'],
-        ("Drop your month in the comments. Skip a Hook, on Roblox.", [('g_casts_dock', 4.0)], ''),
-        "Unlucky."),
+    'tk_c2': groups("The first letter of your name decides your fish.", 'YOUR NAME = *YOUR FISH', [
+        ("A to F: the Supernova Shark.", '*A - F', 'nova'),
+        ("G to L: the Prehistoric Megalodon.", '*G - L', 'meg'),
+        ("M to R: the Golden Shark.", '*M - R', 'gshark'),
+        ("S to Z: the Moonlotus Dragon. One in a hundred million.", '*S - Z', 'lotus'),
+    ], "Drop your first letter in the comments. Skip a Hook, on Roblox.", ('g_casts_dock', 1.0)),
 
     # ================= C Mtrix · Instagram (REEL)
-    'tk_ic1': ladder(
-        ["Double tap, and the Golden Shark is yours.", "Follow, and you get the Moonlotus Dragon.",
-         "Comment, and you get the Supernova Shark.", "Send it to a friend, and the Cosmic Koi is yours.",
-         "Do all four, and you get Big Bertha. A legend."],
-        ['gshark', 'lotus', 'nova2', 'koi', 'bertha'],
-        ['LIKE = *GOLDEN SHARK', 'FOLLOW = *DRAGON', 'COMMENT = *SUPERNOVA', 'SHARE = *COSMIC KOI', 'ALL 4 = *LEGEND'],
-        "Which fish did you get? Skip a Hook, on Roblox."),
-    'dx7_ic': dict(speed=0.85, amb='day', lines=[
-        ("Day seven of updating my Roblox game every day.", [('c23_lagoon_long', 1.0)], 'DAY *7'),
-        ("I want you to see what's new after every update.", [('c06_dock_long', 3.0)], "WHAT'S *NEW?"),
-        ("So I built an update log. One clean window that shows every new thing.", [('c02_basecircle_long', 4.0)], 'UPDATE *LOG', {'sfx': 'ui_open'}),
-        ("It comes with the next update. What should be in it first? See you on day eight!", [('c23_lagoon_long', 7.0)], '')]),
-    'tk_ic2': dict(speed=0.9, amb='night', lines=[
-        ("Screenshot at the right time, and that's your fish.", [('koi_hover', 0.5), ('far_supernova', 5.2)], '*SCREENSHOT IT'),
-        ("Go!", flick(['paddle', 'dragon', 'empress', 'whale', 'goldfish', 'koi', 'gshark', 'colossal', 'meg', 'bertha', 'nova']), '*NOW!', {'flick': True}),
-        ("Show me your screenshot in the comments.", [('far_hold', 0.6)], 'SHOW ME'),
-        ("Skip a Hook, on Roblox.", [('koi_hover', 0.6)], '')]),
+    'tk_ic1': ladder([
+        ("Double tap, and this Golden Shark is yours.", 'gshark', 'LIKE = *GOLDEN SHARK'),
+        ("Follow, and it's a Cosmic Dragon.", 'dragon', 'FOLLOW = *DRAGON'),
+        ("Leave a comment, and the Giant Blue Whale is yours.", 'whale', 'COMMENT = *WHALE'),
+        ("Send this to a friend, and you both get the Cosmic Koi.", 'koi', 'SEND = *COSMIC KOI'),
+        ("Do all four, and the Moonlotus Dragon is yours. One in a hundred million.", 'lotus', 'ALL 4 = *RAREST'),
+    ], "Which fish did you get? Skip a Hook, on Roblox.", labels=['LIKE', 'FOLLOW', 'COMMENT', 'SEND', 'ALL 4']),
+    'tk_ic2': stop("Screenshot while the fish are changing. Whatever is on your screenshot is yours.", '*SCREENSHOT IT',
+                   ['paddle', 'dragon', 'koi', 'goldfish', 'whale', 'gshark', 'nova'],
+                   "Show me what you got in the comments.", 'SHOW *ME',
+                   "Skip a Hook, on Roblox.", first='koi'),
 
     # ================= C Mtrix · YouTube
-    'tk_yc1': ladder(
-        ["Like this, and the Cosmic Dragon is yours.", "Subscribe, and you get the Prehistoric Megalodon.",
-         "Comment, and it's the Giant Blue Whale.", "Share it, and you get the Cosmic Koi.",
-         "Do all four, and the Coral Empress is yours. A legend."],
-        ['dragon', 'meg', 'whale', 'koi', 'empress'],
-        ['LIKE = *DRAGON', 'SUB = *MEGALODON', 'COMMENT = *WHALE', 'SHARE = *COSMIC KOI', 'ALL 4 = *LEGEND'],
-        "Which one did you get? Skip a Hook, on Roblox."),
+    'tk_yc1': ladder([
+        ("Like this Short, and the Supernova Shark is yours.", 'nova', 'LIKE = *SUPERNOVA'),
+        ("Subscribe, and you get the Prehistoric Megalodon.", 'meg', 'SUB = *MEGALODON'),
+        ("Comment, and it's the Giant Blue Whale.", 'whale', 'COMMENT = *WHALE'),
+        ("Share it, and the Cosmic Koi is yours. One in ten million.", 'koi', 'SHARE = *COSMIC KOI'),
+        ("Do all four, and you get the rarest fish in the game. The Moonlotus Dragon.", 'lotus', 'ALL 4 = *RAREST'),
+    ], "Which one did you get? Skip a Hook, on Roblox.", labels=['LIKE', 'SUBSCRIBE', 'COMMENT', 'SHARE', 'ALL 4']),
     'dx8_yc': dict(speed=0.85, amb='day', lines=[
         ("Day eight of updating my Roblox fishing game every day.", [('c05_zonesfly_long1', 2.0)], 'DAY *8'),
-        ("Legends of the Deep is live.", [('lg_bertha_caught', 3.0)], 'NOW *LIVE', {'sfx': 'record'}),
-        ("Every half hour, a legend shows up for four minutes, and your chance doubles.", [('lg_empress_hooked', 0.0), ('lg_empress_hooked', 2.0)], '*X2 CHANCE'),
-        ("I caught Big Bertha. The Coral Empress got away.", [('lg_bertha_caught', 6.0), ('lg_empress_escape', 0.5)], '*1 OF 4'),
-        ("Which legend do you want next? Comment it. See you on day nine!", [('c05_zonesfly_long1', 6.0)], '')]),
-    'tk_yc2': dict(speed=0.88, amb='night', lines=[
-        ("One, two or three? Pick one.", [('g_casts_dock', 3.0)], 'PICK *1, 2 OR 3'),
-        ("Comment your number before it shows up.", [('g_casts_perfect', 6.0)], 'COMMENT *FIRST'),
-        ("One: the Moonlotus Dragon.", fs('lotus')[0], '*1', {'fish': fs('lotus')[1], 'tier': 2}),
-        ("Two: the Golden Shark.", fs('gshark')[0], '*2', {'fish': fs('gshark')[1], 'tier': 1}),
-        ("Three: a Goldfish. Well...", fs('goldfish')[0], '*3', {'fish': fs('goldfish')[1], 'sfx': 'miss'}),
-        ("Lucky or not? Search Skip a Hook on Roblox.", [('g_casts_dock', 6.0)], '')]),
+        ("Legends of the Deep is live.", [('c14_lake_long', 1.0)], 'NOW *LIVE', {'sfx': 'record'}),
+        ("Every half hour, a legend shows up for four minutes, and your chance to hook it doubles.", [('c23_lagoon_long', 2.0), ('c15_temple_long', 3.0)], '*X2 CHANCE'),
+        ("Four legends: Big Bertha, Old Whiskers, the Coral Empress and Frostjaw.", [('c19_islands_long', 2.0), ('c24_rift_long', 3.0)], '*4 LEGENDS'),
+        ("Which one do you want to catch first? Comment it. See you on day nine!", [('c05_zonesfly_long1', 6.0)], '')]),
+    'tk_yc2': pick("One, two, or three? Pick one.", 'PICK *1, 2 OR 3',
+                   "Comment your number before it shows up.", 'COMMENT *FIRST', [
+                       ("One: the Moonlotus Dragon. One in a hundred million.", 'lotus', False),
+                       ("Two: the Golden Shark.", 'gshark', False),
+                       ("Three: a Goldfish. Well...", 'goldfish', True),
+                   ], "Lucky or not? Skip a Hook, on Roblox.", ('g_casts_dock', 3.0)),
 
     # ================= mtgames2# · YouTube @Roblox-ad5
-    'tk_m1': dict(speed=0.9, amb='night', lines=[
-        ("Stop the video right when I say now. That's your fish.", [('g_hud_golden_shark', 5.2)], 'STOP *ON NOW'),
-        ("Ready... now!", flick(['koi', 'gshark', 'meg', 'paddle', 'bertha', 'whale', 'lotus', 'nova', 'goldfish', 'empress']), '*NOW!', {'flick': True}),
-        ("Legend? Shark? Or the poor little paddlefish?", [('lg_bertha_caught', 5.0), ('g_paddlefish_card', 6.0)], 'WHAT DID *YOU GET?'),
-        ("Comment it. Search Skip a Hook on Roblox.", [('g_hud_golden_shark', 5.6)], '')]),
+    'tk_m1': stop("Stop the video on a fish. That's your catch for today.", 'STOP = *YOUR CATCH',
+                  ['koi', 'gshark', 'meg', 'paddle', 'whale', 'lotus', 'goldfish'],
+                  "Rare one, or the poor little paddlefish? Comment it.", 'WHAT DID *YOU GET?',
+                  "Skip a Hook, on Roblox.", first='gshark'),
     'cc8_m2': dict(prog=(2, 4, 1000), speed=0.85, amb='day', lines=[
         ("Day eight of trying to reach one thousand players.", [('c13_pete_long', 2.0)], 'DAY *8'),
         ("Average today: four. And over thirty one thousand six hundred visits.", [('c03_baserow_long2', 1.0)], '*4 PLAYERS', {'prog': True}),
-        ("Legends are out. Every half hour, one shows up in its zone.", [('lg_empress_hooked', 1.8)], 'LEGEND *SIGHTED', {'sfx': 'bite'}),
-        ("Big Bertha was my first. Which one gets you? Comment it. See you on day nine!", [('lg_bertha_caught', 3.5), ('c13_pete_long', 7.0)], '')]),
-    'tk_m2': dict(speed=0.85, amb='day', lines=[
-        ("Rate my catch from one to ten.", [('lg_bertha_caught', 0.0)], 'RATE IT *1-10', {'sfx': 'reel'}),
-        ("This is Big Bertha. One of four legends in the lake.", [('lg_bertha_caught', 3.0)], '*BIG BERTHA', {'fish': fs('bertha')[1], 'tier': 4, 'sfx': 'record'}),
-        ("She only shows up every half hour, for four minutes.", [('lg_bertha_caught', 6.5)], '*4 MINUTES'),
-        ("Be honest. What's your rating? Skip a Hook, on Roblox.", [('lg_bertha_caught', 0.3)], '')]),
+        ("Every half hour, a legend shows up in its zone, and your chance to hook it doubles.", [('c23_lagoon_long', 1.0), ('c14_lake_long', 4.0)], 'LEGEND *SIGHTED', {'sfx': 'bite'}),
+        ("Have you seen one yet? Comment it. See you on day nine!", [('c13_pete_long', 7.0)], '')]),
+    'tk_m2': dict(speed=0.88, amb='night', lines=[
+        ("Rate this fish from one to ten.", [shot('lotus', False)], 'RATE IT *1-10'),
+        ("The Moonlotus Dragon. Ethereal. One in a hundred million.", [('g_hold_confetti', 0.7, {'max': 1.95, 'fish': ('MOONLOTUS DRAGON', '1 IN 100,000,000')})], '*1 IN 100M', {'tier': 4, 'sfx': 'record'}),
+        ("One of the rarest fish in my whole game.", [shot('lotus')], '*ETHEREAL'),
+        ("Be honest. What's your rating? Skip a Hook, on Roblox.", [shot('lotus', False)], '')]),
 
     # ================= mtfgams12 · YouTube
-    'tk_n1': dict(speed=0.88, amb='night', lines=[
-        ("Choose wisely. One, two, or three.", [('g_casts_perfect', 2.0)], 'CHOOSE *WISELY'),
-        ("Write your number in the comments. Then keep watching.", [('g_casts_dock', 7.0)], 'NUMBER *FIRST'),
-        ("One: the Colossal Megalodon.", fs('colossal')[0], '*1', {'fish': fs('colossal')[1], 'tier': 3}),
-        ("Two: the Cosmic Koi.", fs('koi')[0], '*2', {'fish': fs('koi')[1], 'tier': 2}),
-        ("Three: a Paddlefish. Sorry.", [('g_paddlefish_card', 5.8)], '*3', {'fish': fs('paddle')[1], 'sfx': 'miss'}),
-        ("Did you win? Search Skip a Hook on Roblox.", [('g_casts_perfect', 5.0)], '')]),
-    'dx8_n': dict(speed=0.85, amb='day', lines=[
-        ("Day eight of updating my Roblox game every day.", [('c14_lake_long', 3.0)], 'DAY *8'),
-        ("You voted on Discord, so world two is now the Open Sea.", [('c30_boat', 1.0)], 'OPEN *SEA'),
-        ("Your own boat, islands, and fish schools you can find with a sonar.", [('c30_boat', 6.0), ('c19_islands_long', 2.0)], '*YOUR BOAT'),
-        ("I coded the first part today. It stays closed until it's really good.", [('c18_galleon_long', 2.0)], 'NOT *YET'),
-        ("What boat should I add first? Comment it. See you on day nine!", [('c14_lake_long', 7.0)], '')]),
-    'tk_n2': months(
-        ("The month you were born decides your fish.", [('g_casts_perfect', 3.0)], 'YOUR MONTH = *YOUR FISH', {'sfx': 'cast_full'}),
-        ['koi', 'goldfish', 'bertha', 'gshark', 'paddle', 'meg', 'whale', 'empress', 'lotus', 'dragon', 'nova', 'colossal'],
-        ("Tell me your month in the comments. Skip a Hook, on Roblox.", [('g_casts_perfect', 6.0)], ''),
-        "That's rough."),
+    'tk_n1': pick("Choose wisely. One, two, or three.", 'CHOOSE *WISELY',
+                  "Write your number in the comments. Then keep watching.", 'NUMBER *FIRST', [
+                      ("One: the Cosmic Koi. One in ten million.", 'koi', False),
+                      ("Two: a Paddlefish. Sorry.", 'paddle', True),
+                      ("Three: the Cosmic Dragon.", 'dragon', False),
+                  ], "Did you win? Skip a Hook, on Roblox.", ('g_casts_perfect', 2.0)),
+    'tk_n2': groups("The last number of your birth year decides your fish.", 'BIRTH YEAR = *YOUR FISH', [
+        ("Zero, one or two: the Giant Blue Whale.", '*0 - 2', 'whale'),
+        ("Three, four or five: the Cosmic Dragon.", '*3 - 5', 'dragon'),
+        ("Six or seven: the Supernova Shark.", '*6 - 7', 'nova'),
+        ("Eight or nine: the Cosmic Koi. One in ten million.", '*8 - 9', 'koi'),
+    ], "Tell me your number in the comments. Skip a Hook, on Roblox.", ('g_casts_dock', 5.0)),
 }
+
+# aus Fassung 1 unverändert übernommen (keine Legenden-Clips, Skript ok)
+KEEP = ['dx7_b', 'dx7_ic', 'dx8_n']
 
 POST_PLAN = [
     ('7181171', 'tiktok', [('tk_a1', '12:03'), ('cc8_tt', '17:33'), ('tk_a2', '19:03')]),
@@ -251,5 +242,3 @@ POST_PLAN = [
     ('7752416', 'youtube', [('tk_m1', '12:21'), ('cc8_m2', '16:21'), ('tk_m2', '19:21')]),
     ('7773832', 'youtube', [('tk_n1', '12:24'), ('dx8_n', '16:24'), ('tk_n2', '19:24')]),
 ]
-
-VIDEOS['tk_yc1']['labels'] = ['LIKE', 'SUBSCRIBE', 'COMMENT', 'SHARE', 'ALL 4']

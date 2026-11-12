@@ -237,6 +237,15 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 - Clip-Hinweise: koi_hover 0–0,4 s weiß + ab 2,8 s rot (Karte); golden_shark_reveal 2,0–2,9 s weiß; g_paddlefish_card Karte erst ab 6,1 s;
   Clips < Satzlänge -> talk.py macht automatisch Zeitlupe (max 0,5x).
 
+- **12.11. ~21:00 User-Feedback zur 1. TALK-Fassung (gilt ab jetzt):** Skripte müssen Sinn ergeben (kein "pause when I say stop", keine Fakten, die
+  nicht stimmen); Stop-Spiel: Fische viel zu schnell -> jetzt 1,6 s je Fisch mit Namens-Schild; Like-Leiter ist OK; **lg_*-Legenden-Clips NIE benutzen**
+  (LEGEND-CAUGHT-Pop-up verdeckt den Fisch, "sieht tot aus"). Nur Fisch-Momente mit großem, klarem Fisch (Tabelle F in t_1113.py mit 'max'-Fenster).
+  Fisch-Schild = echte Chancen aus dem Spiel: Supernova 1/100, Golden Shark 1/50k, Megalodon 1/100k, Cosmic Dragon 1/100k, Giant Blue Whale 1/500k,
+  Cosmic Koi 1/10M, Moonlotus Dragon 1/100M. Leiter immer aufsteigend selten. Bei Rate-/Higher-Lower-Fragen Clips OHNE Spiel-Chancen-Text zeigen
+  (*_q-Einträge), sonst verrät das Spiel die Antwort. Neue Formate 13.11.: guess (Seltenheit raten), hilo (higher/lower), rather (would you rather),
+  groups (Monat/Jahreszeit/Farbe/Buchstabe), sell-or-keep, rate 1-10.
+- **Routine 12.11. 20:47 ausgefallen (device_absent)** -> 13.11. von Hand in der Sitzung gebaut (t_1113, CCU Day 9 = 3, Day-X 8/9 = Open Sea Phase 1).
+
 ## CCU-Serie ("Day N of trying to reach 1,000 CCU", YT M&D + YT Rblxcntnt + TikTok @rotaztz11)
 | Day | Datum | Average CCU (Dashboard, letzter Tag) | Besuche | Favoriten | Thema |
 |---|---|---|---|---|---|
@@ -248,6 +257,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 | 6 | 10.11. | **5** (-50,1 % laut Dashboard) | 31,260 | 1,374 | ehrlich "halbiert": cc6_tt nicht aufgeben + nächstes Update (Truhe/faire Ranglisten) · cc6_yt danach WELT 2 · cc6_m2 Danke + Besuche/Favoriten |
 | 7 | 11.11. | **2** (-56,4 % laut Dashboard) | 31,419 | 1,382 | Comeback-Plan (NICHT veröffentlicht, games-API updated 08.11.): cc7_tt Classic is back · cc7_yt Legends of the Deep · cc7_m2 Sichtungen jede halbe Stunde + Classic |
 | 8 | 12.11. | **4** (+79,1 % laut Dashboard) | 31,647 | 1,394 | Legends/Classic+ LIVE (games-API updated 10.11. 23:22 UTC): cc8_tt Coral Empress entkommt · cc8_yt Legends live + Welt 2 = OPEN SEA (Discord-Abstimmung) · cc8_m2 Sichtungen jede halbe Stunde + Big Bertha (TALK-Format, t_1112) |
+| 9 | 13.11. | 3 (-17,6 % laut Dashboard) | 31,831 | 1,405 | Open Sea (Discord-Abstimmung) Phase 1 gebaut/getestet, nicht live: cc9_tt Open Sea · cc9_yt 3 Inseln + Doubloons · cc9_m2 Boote |
 
 ## Day-X "updating my Roblox game every day"
 - Mtrix-YT + mtfgams12: Day 1 = 5.11., **Day 2 = 6.11.** (dx_yc Fish Rush/Meteor, dx_n Ziel-Silhouette) -> Day 3 = 7.11.

@@ -130,7 +130,7 @@ def draw_fish(fr, seg, lt):
     f = seg.get('fish')
     if not f: return
     name, rar = f
-    col = RAR.get(rar, (255, 255, 255))
+    col = RAR.get(rar, (255, 205, 60))
     key = ('fish', name, rar)
     if key not in C._cache:
         t1 = C.text_sprite(name, 58, C.F_BLACK_I, fill=(255, 255, 255), stroke=8)
@@ -143,7 +143,7 @@ def draw_fish(fr, seg, lt):
     a = C.e_out3((lt - 0.15) / 0.3)
     if a <= 0: return
     sc = 0.7 + 0.3 * C.spring(lt - 0.15, 3.4, 0.4)
-    cy = BY + BH - 105
+    cy = BY + BH - 80
     C.blit(fr, _glow(col, 260), C.W / 2, cy, 2.2, 0, 0.35 * a, add=True)
     C.blit(fr, box, C.W / 2, cy, sc, 0, a)
     C.blit(fr, t2['img'], C.W / 2, cy - 36 * sc, sc, 0, a)
@@ -241,6 +241,21 @@ def build(v, vid):
             '--pause', pau, '--out', wav, '--json', js] + texts)
         j = json.load(open(js)); j['_tag'] = tag; json.dump(j, open(js, 'w'))
     blocks = json.load(open(js))['blocks']
+    # 'hold' (Satz-Option, s): Stille NACH dem Satz, z. B. damit Fische beim Stop-Spiel lange genug stehen (User 12.11.: "keiner reagiert so schnell")
+    holds = [(ln[3] if len(ln) > 3 else {}).get('hold', 0.0) for ln in v['lines']]
+    if any(holds):
+        from scipy.io import wavfile as _wf
+        raw = load(wav)
+        shift, pieces = 0.0, []
+        for bi, b in enumerate(blocks):
+            a = b['start']; e = blocks[bi + 1]['start'] if bi + 1 < len(blocks) else len(raw) / SR
+            pieces.append((raw[int(a * SR):int(e * SR)], a + shift))
+            b['start'] += shift; b['end'] += shift
+            for w in b['words']: w['start'] += shift; w['end'] += shift
+            shift += holds[bi]
+        out = np.zeros((int((len(raw) / SR + shift + 0.5) * SR), 2), np.float32)
+        for x, t in pieces: put(out, x, t)
+        wav = os.path.join(d, 'vo_hold.wav'); _wf.write(wav, SR, out)
     segs, line_t, k = [], [], 0
     events = []   # (t, sfx, vol)
     tiers = []
@@ -269,10 +284,11 @@ def build(v, vid):
             dur = dts[si]
             cd = clip_dur(clip)
             sp = 1.0
-            avail = cd - src - 0.2
-            if dur > avail:                      # Clip zu kurz: erst Zeitlupe (max. 0.5x), dann Start nach vorn
-                sp = max(0.5, avail / dur)
-                if dur * sp > avail: src = max(0.0, cd - 0.2 - dur * sp)
+            mx = sh_[2].get('max') if len(sh_) > 2 and isinstance(sh_[2], dict) else None
+            avail = (min(cd - 0.2, mx - 0.15) if mx else cd - 0.2) - src     # 'max' = Ende des sauberen Fensters (kein Popup/Blitz danach)
+            if dur > avail:                      # Clip zu kurz: erst Zeitlupe (max. 0.5x, mit 'max' bis 0.3x), dann Start nach vorn
+                sp = max(0.3 if mx else 0.5, avail / dur)
+                if dur * sp > avail: src = max(0.0, ((mx - 0.15) if mx else cd - 0.2) - dur * sp)
             z = (1.0, 1.06) if k % 2 == 0 else (1.05, 1.0)
             if o.get('flick'): z = (1.02, 1.02)
             seg = dict(clip=clip, src=src, dur=dur, z=z, head=head_list(head if si == 0 else '', -0.8 if li == 0 else 0.05))
@@ -283,8 +299,10 @@ def build(v, vid):
                 events.append((t0 + sum(dts[:si]), 'ui_tick', 0.9))
             if o.get('fish') and si == len(shots) - 1 or (o.get('fish') and len(shots) == 1):
                 seg['fish'] = o['fish']
+            if len(sh_) > 2 and isinstance(sh_[2], dict) and sh_[2].get('fish'):
+                seg['fish'] = sh_[2]['fish']
             if last and si == n - 1:
-                seg['endcard'] = True; seg['head'] = []
+                seg['endcard'] = True; seg['head'] = []; seg.pop('fish', None)
                 seg['src'] = sh_[1]; seg['ramp'] = [(0, 0), (dur, dur * 0.4)]   # Endkarte ruhig, Anfangs-Clip ab seinem Start (Loop)
             segs.append(seg); k += 1
         if 'tier' in o:
