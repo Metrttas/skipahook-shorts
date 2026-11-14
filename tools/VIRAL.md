@@ -2,6 +2,8 @@
 
 **AB 12.11.: NUR NOCH REDE-VIDEOS (Abschnitt "TALK-Format ab 12.11.", tools/promo/talk/talk.py). Keine Clean Edits, keine fresh_beats-Musik, keine ae.py-Videos mehr posten.**
 
+**AB 15.11.: VOR JEDEM RENDER `tools/LOGIK.md` (8 Logik-Fragen) + `python3 tools/talk/logic_check.py <tagesdatei>` + blinde Kritiker-Agenten (Prompt in LOGIK.md). Keine Zufalls-Zuordnungen (Buchstabe/Geburtstag/Sternzeichen/Stop = dein Fisch), Like-Leiter max 1/Konto/Tag als Spass, Bild = Wort. Review 14.11.: tools/talk/review_1114.md (13 von 27 STOP).**
+
 User 2026-10-30 12:30: "bau dir ein Gedächtnis auf, was viral gehen könnte … jeden Tag 8 Videos posten".
 Vor jedem neuen Video-Tag LESEN, nach jedem Tag die Tabelle "Was lief" ergänzen (Metricool-Analytics).
 
