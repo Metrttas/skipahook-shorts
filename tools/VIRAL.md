@@ -247,6 +247,8 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
   (*_q-Einträge), sonst verrät das Spiel die Antwort. Neue Formate 13.11.: guess (Seltenheit raten), hilo (higher/lower), rather (would you rather),
   groups (Monat/Jahreszeit/Farbe/Buchstabe), sell-or-keep, rate 1-10.
 - **14.11.:** t_1114 (Formate rather, groups Name/Geburtstag/Element, guess-Twist Supernova 1/100, hilo, sell-or-keep, rate, Leiter, Stop). boat_garage ist fast Standbild (119 -> 11 echte Bilder) -> nicht benutzen; t_zones_boats 0–0,4 s ist Nacht/dunkel.
+- **15.11. (t_1115, erster Tag mit LOGIK-Gate):** logic_check (0 STOP) + 3 blinde Sonnet-Kritiker -> ~15 Fixes eingebaut (Day-X-Hook = "I'm testing X for my Roblox fishing game", Spielname im 1. Satz, Bild = Wort, Insider-Woerter raus). Formate: timecalc ("1 Fisch pro Sekunde, ohne Glueck -> ~3 Jahre/4 Monate/14 h/28 h", Mathe = 1/Chance), rank (selten -> am seltensten, #1 zuletzt), rarer (rarer or more common), trade (sicher vs. Risiko), guess3 (3 Optionen), sellkeep (Aquarium verdient offline = Spieltext), Like-Leiter nur 1x (C-YT, "just for fun").
+  **Neue Open-Sea-Bilder:** `tools/promo/talk/stills_mk.py` macht aus docs/ref/sea2_*.jpg 6-s-Ken-Burns-Clips `s_*` (Schiffe, Inseln, Sturm/Strudel, Bosse, Funde, Geisterschiff, Sea Giant, Fernrohr) und legt sie nach promo/clips (Upload-Kopie). Bis echte Open-Sea-Aufnahmen da sind (User fragen!), sind das die einzigen Bilder fuer Welt-2-Themen.
 - **Routine 12.11. 20:47 ausgefallen (device_absent)** -> 13.11. von Hand in der Sitzung gebaut (t_1113, CCU Day 9 = 3, Day-X 8/9 = Open Sea Phase 1).
 
 ## CCU-Serie ("Day N of trying to reach 1,000 CCU", YT M&D + YT Rblxcntnt + TikTok @rotaztz11)
@@ -262,6 +264,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 | 8 | 12.11. | **4** (+79,1 % laut Dashboard) | 31,647 | 1,394 | Legends/Classic+ LIVE (games-API updated 10.11. 23:22 UTC): cc8_tt Coral Empress entkommt · cc8_yt Legends live + Welt 2 = OPEN SEA (Discord-Abstimmung) · cc8_m2 Sichtungen jede halbe Stunde + Big Bertha (TALK-Format, t_1112) |
 | 9 | 13.11. | 3 (-17,6 % laut Dashboard) | 31,831 | 1,405 | Open Sea (Discord-Abstimmung) Phase 1 gebaut/getestet, nicht live: cc9_tt Open Sea · cc9_yt 3 Inseln + Doubloons · cc9_m2 Boote |
 | 10 | 14.11. | 4 (+24,0 % laut Dashboard) | 32,058 | 1,418 | Open Sea Phase 1/2-Pläne, nichts Neues live: cc10_tt Fish Frenzy (Plan) · cc10_yt Blender-Inseln + Eis/Vulkan später · cc10_m2 Freunde fahren mit (Plan) (t_1114) |
+| 11 | 15.11. | 4 (+0,8 % laut Dashboard) | 32,374 | 1,433 | Open Sea 2.0 in Studio (nicht live): cc11_tt Segelschiffe Sloop/Brig/Galleon · cc11_yt 1,433 Favoriten + neue Inseln · cc11_m2 Bug Wrack-Schatz zahlte nie aus -> gefixt (t_1115) |
 
 ## Day-X "updating my Roblox game every day"
 - Mtrix-YT + mtfgams12: Day 1 = 5.11., **Day 2 = 6.11.** (dx_yc Fish Rush/Meteor, dx_n Ziel-Silhouette) -> Day 3 = 7.11.
@@ -277,6 +280,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 
 - 13.11. (TALK v2, t_1113): Mtrix-YT/mtfgams12 **Day 9** (dx9_yc Schwärme normal/glitzernd/golden, dx9_n Captain-XP/Inseln/Events); B-TT/B-YT/C-TT/C-IG **Day 8** (dx8_b Doubloons, dx8_yb Laderaum, dx8_c Sonar, dx8_ic Discord-Abstimmung).
 - 14.11. (TALK v2, t_1114): Mtrix-YT/mtfgams12 **Day 10** (dx10_yc Freischaltung Rang 3 gratis + Welt-1-Boote zählen, dx10_n Freunde fahren mit (Plan, Sitze gehen schon)); B-TT/B-YT/C-TT/C-IG **Day 9** (dx9_b Blender-Inseln statt grauer Blöcke, dx9_yb Boss Storm Leviathan (Plan Phase 2, ~1x/h, ~1 %/Wurf), dx9_c keine Doubloons für Robux, dx9_ic 4 neue Icons). Keine neuen Spiel-Commits seit 12.11. -> Open-Sea-Themen gehen aus; nächster Tag: Day 11 bzw. Day 10, neue Commits prüfen. Clips zeigen weiter Welt 1 (Boot/Lagune/Inseln) -> Open-Sea-Aufnahmen beim User anfragen.
+- 15.11. (t_1115, Logik-Gate): Mtrix-YT/mtfgams12 **Day 11** (dx11_yc neue Inseln + Leuchtturm-Schnellreise, dx11_n 4 See-Schlangen-Bosse im Fisch-Stil); B-TT/B-YT/C-TT/C-IG **Day 10** (dx10_b Stuerme = mehr Glueck + Sturm-Fische, dx10_yb Geisterschiff + Sea Giants, dx10_c Funde: Sandbaenke/Wracks/Flaschenpost, dx10_ic Segelschiffe am Rad + Fernrohr). Quelle git 13.–14.11. (Open Sea 2.0 Phase B–D, Bosse, Kopfgelder, Captain's Log), alles 'testing', nicht live. Uebrig fuer morgen: Tages-Kopfgelder (3 Ziele + Bonus-Truhe), Captain's Log, Schwarm-Serie +10 %/Fang, Wind Boost, eigener Server fuer Welt 2, 24 neue Fische – nur mit passendem Bild.
 
 **promo\clips am 06.11. benutzt (102 Clips, alle mit neuen Startzeiten):** siehe `days/k_1106.py`. Bibliothek ist seit 5.11. komplett mehrfach
 benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fish Rush, Meteor, Got away, Zonen-Leiste, Morgen-Karte).
