@@ -56,6 +56,8 @@ P.update({
  's_bossg_4': lambda: panel('sea2_boss_ingame.jpg',2,2,1,1,2),
  's_spyglass': lambda: panel('sea2_phaseD_rest.jpg',2,3,0,2,2),
 })
+P['s_waves_game']=lambda: crop('sea2_storm_ingame.jpg',0,205,1200,480)
+P['s_waves_night']=lambda: crop('sea2_storm_ingame.jpg',0,700,1050,960)
 names=sys.argv[2:] or list(P)
 sheet=[]
 for n in names:
