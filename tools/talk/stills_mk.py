@@ -50,6 +50,10 @@ P.update({
  's_rest_deep': lambda: panel('sea2_phaseD_rest.jpg',2,3,1,0,2),
  's_ship_ghost': lambda: panel('sea2_phaseD_rest.jpg',2,3,0,1,2),
  's_sea_giant': lambda: panel('sea2_phaseD_rest.jpg',2,3,1,1,2),
+ 's_bossg_1': lambda: panel('sea2_boss_ingame.jpg',2,2,0,0,2),
+ 's_bossg_2': lambda: panel('sea2_boss_ingame.jpg',2,2,1,0,2),
+ 's_bossg_3': lambda: panel('sea2_boss_ingame.jpg',2,2,0,1,2),
+ 's_bossg_4': lambda: panel('sea2_boss_ingame.jpg',2,2,1,1,2),
  's_spyglass': lambda: panel('sea2_phaseD_rest.jpg',2,3,0,2,2),
 })
 names=sys.argv[2:] or list(P)
