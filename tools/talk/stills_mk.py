@@ -70,7 +70,29 @@ P['s_z_roof']=lambda: crop('u231_cave_v2.jpg',4,4,1148,500)
 P['s_z_lagoonview']=lambda: crop('u231_cave_v2.jpg',1156,4,2300,500)
 P['s_z_cave']=lambda: crop('u231_cave_v2.jpg',4,548,1148,1044)
 P['s_z_bench']=lambda: crop('u233_rainbow_bench.jpg',0,48,1050,799)
-FIT={'s_poster','s_ulog','s_z_bench'}
+# 19.11.: neue Fische Zonen 16-19 (u230b_new_fish 1270x1858, je Zone 2x4 Karten), Bänke 16-19 (u232), neue Ruten (u230_gear)
+P['s_nf_candy']=lambda: crop('u230b_new_fish.jpg',0,62,1270,650)
+P['s_nf_crystal']=lambda: crop('u230b_new_fish.jpg',0,660,1270,1252)
+P['s_nf_rainbow']=lambda: crop('u230b_new_fish.jpg',0,1252,1270,1858)
+def card(c, r, zone):  # eine Fisch-Karte (Bild + Name + Seltenheit), zone 0/1/2
+    y0=[[105,380],[704,976],[1298,1571]][zone][r]; x0=12+c*314
+    return crop("u230b_new_fish.jpg",x0,y0,x0+302,y0+286)
+P['s_f_sugarplum']=lambda: card(3,1,0)
+P['s_f_lollipop']=lambda: card(1,0,0)
+P['s_f_colossus']=lambda: card(3,1,1)
+P['s_f_angler']=lambda: card(1,1,1)
+P['s_f_leviathan']=lambda: card(3,1,2)
+P['s_f_unicorn']=lambda: card(0,1,2)
+P['s_benches']=lambda: cv2.imread(R+'u232_benches.jpg')
+P['s_bench_candy']=lambda: panel('u232_benches.jpg',2,2,0,0,2)
+P['s_bench_crystal']=lambda: panel('u232_benches.jpg',2,2,1,0,2)
+P['s_bench_jungle']=lambda: panel('u232_benches.jpg',2,2,0,1,2)
+P['s_bench_rainbow']=lambda: panel('u232_benches.jpg',2,2,1,1,2)
+P['s_gear_rods']=lambda: crop('u230_gear.jpg',0,0,1800,445)
+P['s_gear_hooks']=lambda: crop('u230_gear.jpg',0,450,1800,1346)
+P['s_teaser']=lambda: cv2.imread(R+'u234_event_teaser.jpg')
+FIT={'s_poster','s_ulog','s_z_bench','s_nf_candy','s_nf_crystal','s_nf_rainbow','s_f_sugarplum','s_f_lollipop','s_f_colossus','s_f_angler',
+     's_f_leviathan','s_f_unicorn','s_benches','s_gear_rods','s_gear_hooks','s_teaser'}
 names=sys.argv[2:] or list(P)
 sheet=[]
 for n in names:
