@@ -58,6 +58,19 @@ P.update({
 })
 P['s_waves_game']=lambda: crop('sea2_storm_ingame.jpg',0,205,1200,480)
 P['s_waves_night']=lambda: crop('sea2_storm_ingame.jpg',0,700,1050,960)
+# 18.11.: Release-Bilder (Open Sea live 17.11., Zonen 16-19). FIT = ganzes Bild im 9:16-Band zeigen (Rand = unscharfes Bild)
+P['s_poster']=lambda: crop('u234_update_log.jpg',1035,0,1651,620)
+P['s_ulog']=lambda: crop('u234_update_log.jpg',0,0,1000,620)
+P['s_z_candy']=lambda: panel('u230_studio.jpg',2,3,0,0,2)
+P['s_z_crystal']=lambda: panel('u230_studio.jpg',2,3,1,0,2)
+P['s_z_mush']=lambda: panel('u230_studio.jpg',2,3,0,1,2)
+P['s_z_rainbow']=lambda: panel('u230_studio.jpg',2,3,1,1,2)
+P['s_z_rainbow2']=lambda: panel('u230_studio.jpg',2,3,0,2,2)
+P['s_z_roof']=lambda: crop('u231_cave_v2.jpg',4,4,1148,500)
+P['s_z_lagoonview']=lambda: crop('u231_cave_v2.jpg',1156,4,2300,500)
+P['s_z_cave']=lambda: crop('u231_cave_v2.jpg',4,548,1148,1044)
+P['s_z_bench']=lambda: crop('u233_rainbow_bench.jpg',0,48,1050,799)
+FIT={'s_poster','s_ulog','s_z_bench'}
 names=sys.argv[2:] or list(P)
 sheet=[]
 for n in names:
@@ -67,6 +80,12 @@ for n in names:
     if n in ('s_ship_sloop','s_ship_brig','s_ship_galleon'):
         im=im[28:]; h,w=im.shape[:2]; tw=int(h*2.12); px=(tw-w)//2; py=0
         im=cv2.copyMakeBorder(im,py,py,px,px,cv2.BORDER_REPLICATE)
+    if n in FIT:  # Inhalt passt in die Bandmitte (Seitenverh. 1.54), Rest = unscharfer Hintergrund
+        h,w=im.shape[:2]; tw,th=1916,902; fg_h=th; fg_w=int(w*th/h)
+        if fg_w>1300: fg_w=1300; fg_h=int(h*1300/w)
+        bg=cv2.GaussianBlur(cv2.resize(im,(tw,int(h*tw/w)))[:th] if h*tw/w>=th else cv2.resize(im,(tw,th)),(0,0),25)
+        bg=(bg*0.55).astype(np.uint8); fg=cv2.resize(im,(fg_w,fg_h),interpolation=cv2.INTER_AREA)
+        y0=(th-fg_h)//2; x0=(tw-fg_w)//2; bg[y0:y0+fg_h,x0:x0+fg_w]=fg; im=bg
     h,w=im.shape[:2]
     big=cv2.resize(im,None,fx=2.4*W/w if w<W else 1.15*W/w,fy=2.4*W/w if w<W else 1.15*W/w,interpolation=cv2.INTER_LANCZOS4)
     big=cv2.addWeighted(big,1.4,cv2.GaussianBlur(big,(0,0),2),-0.4,0)
