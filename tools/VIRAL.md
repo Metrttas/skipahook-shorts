@@ -307,6 +307,17 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
   Zwischenbild-Mischung (VFR + Zeitlupe). Sounds: u1/u3/u4/u5 (Videos des Users 18.11.), song1_fussball_drop, itsout_finally_out; u2 sehr leise.
 - **18.11.:** 18 Videos fb_* (Spec specs/fb_1118.py), 19:xx + 21:xx. Takes: g1-g4 follow 1v1 (bester Look), s2/b3/o1 Showcase, d1 Bicycle-Elim, d2-d4/f5 Duos-Chaos.
   Offen: echtes Team-Play (Pass -> Fallrückzieher) als gescriptete Szene bauen (CinematicDirector), Bots in Duos verlieren schnell.
+- **18.11. v2 (User: v1-Bot-Clips "tot", Spieler standen ineinander -> "richtig kranke, saubere Clips, die Sinn ergeben"; 3 Tests abgesegnet):**
+  NEU = **DuoDirector** (tools/footbomb/duo/DuoDirector.lua + scenes.lua + check.lua): gescriptete 2v2-Szenen im Studio-EDIT-Modus, Bild für Bild
+  (verankerte R15-BotAvatars, echte AnimController-Posen per Vorwärts-Kinematik, Ball = Parabeln zwischen Kontaktpunkten, Kameras follow/side/hero/ball/fixed,
+  Zeitlupe über segs {n, speed0, speed1}, Einschlag-Effekte, Feld versinkt). Ablauf: Quellen als _G.FB_DD_SRC/_G.FB_SC_SRC in Studio laden, Lobby 3000 nach
+  unten (`workspace.Lobby`, Pivot merken, am Ende ZURÜCK), `D.Setup(name)`, `_G.FB_CHECK()` (Overlap/Ball-durch-Spieler/OOB) -> `D.Play({hold=0.1~0.12, delay=5})`
+  + Blender `_fb_capseq(out, N, hold)` (liest den 15-Zellen-Bildzähler unten links, nimmt jedes Bild genau 1x, 1920x1080/60) -> Kontaktbogen jeder 10. Frame prüfen.
+  Szenen: bike (Brust-Annahme, Lupfer, Fallrückzieher), fake (Antäuschen, Volley in die andere Ecke), save (Grätsche-Rettung, Kopfball, Scherenschlag),
+  scorp (Kopfball-Pass, Skorpion), tornado (No-look-Hacke, Tornado-Kick), rally (Volley-Volley-Kopfball, Axe-Kick), flyhead (Flanke, Flugkopfball).
+  Lehren: Verteidiger-Hechtsprung 0.25 s VOR Landung, seitlich der Ballbahn, `hold=3, holdPose=true`; Einschlag-Kamera von außen; Avatar Rio NIE (Kette "STANNI"),
+  Ace (orange) nur Rot; Lobby sonst im Hintergrund sichtbar. Schnitt: specs/fb_1118b.py (story(): Aufbau -> Drop auf Schuss -> Einschlag -> Replay -> Jubel;
+  cold=True Einschlag zuerst; montage(): PICK ONE 1/2/3). 18 Posts 19:xx/21:xx per updateScheduledPost auf fb2_*.mp4 umgestellt.
 
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
