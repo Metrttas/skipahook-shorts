@@ -292,6 +292,22 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 **promo\clips am 06.11. benutzt (102 Clips, alle mit neuen Startzeiten):** siehe `days/k_1106.py`. Bibliothek ist seit 5.11. komplett mehrfach
 benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fish Rush, Meteor, Got away, Zonen-Leiste, Morgen-Karte).
 
+
+## FOOTBOMB-Shorts ab 18.11. (User: "ab heute 2x Skip a Hook + 2x Footbomb je Account", nur SEINE Sounds, "Querformat, bisschen näher rangezoomt, oben/unten blurry, man soll mehr sehen")
+- **Aufnahme (PC, Blender-Python, ohne Installation):** Studio im Play-Modus, Kamera per Client-Skript `_G.FBCAM` (BindToRenderStep "FBCAM", Modi
+  follow (3rd-Person hinter Bot `hero`, wie Volley-Bomb-TikToks = bester Look), behind (hinter einem Feld), side, low, orbit), UI aus (`_G.FBUI_CONN`).
+  Spielmodi: Server `game.ServerStorage.FootbombDebug:Invoke(cmd,arg)`: `showcase 1.6` (1v1 rot/blau, Tricks), `showcase off`, `afk on`, `mode Duos`,
+  `bots 8`, `start`, `status`; Auto-Neustart-Schleife `_G.FB_AUTO`. Ereignis-Log Client `_G.FBLOG` (Kick/Elim mit Schuss-Name/AirPose/Slide, Unix-ms)
+  -> Takes über wall0 synchronisieren. Blender: `_FBGrab2` (GDI BitBlt, vsync 60 fps, 1600x900 aus der Viewport-Mitte x4320 y774), Take = Bilder in
+  den RAM (max 20 s) -> als MOV ('raw '-Header von Hand, `_fb_movhdr`) per Pipe an SteelSeries-ffmpeg (h264_nvenc) -> `Documents\Footbomb_Videos\<Datum>\<take>.mp4`
+  + `.ts.json` {wall0, ts}. NICHT auf Platte als BMP schreiben (C: fast voll, ~25 MB/s). Blender-Aufrufe mit Haupt-Thread-Schleifen > 80 s laufen weiter (Timeout ignorieren).
+  Funktionen sind nach Blender-Neustart weg -> neu definieren (Code in tools/footbomb/README).
+- **Schnitt:** `/home/claude/fb/fbedit.py <spec> <ids> sheet|render` (Kopf = Format): Band 1080x760 (y 600-1360), Rand = dasselbe Bild unscharf/dunkel,
+  ein Satz oben (2. Satz ab Drop, farbig), "Search FOOTBOMB on Roblox" unten, Schnitt auf Beat-Raster (`snd/beats.json`, eigene Beat-Analyse beats.py),
+  Zwischenbild-Mischung (VFR + Zeitlupe). Sounds: u1/u3/u4/u5 (Videos des Users 18.11.), song1_fussball_drop, itsout_finally_out; u2 sehr leise.
+- **18.11.:** 18 Videos fb_* (Spec specs/fb_1118.py), 19:xx + 21:xx. Takes: g1-g4 follow 1v1 (bester Look), s2/b3/o1 Showcase, d1 Bicycle-Elim, d2-d4/f5 Duos-Chaos.
+  Offen: echtes Team-Play (Pass -> Fallrückzieher) als gescriptete Szene bauen (CinematicDirector), Bots in Duos verlieren schnell.
+
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
 |---|---|---|---|---|---|---|---|
