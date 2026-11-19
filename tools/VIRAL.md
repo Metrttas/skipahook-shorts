@@ -332,6 +332,21 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
   18 Posts fb19_* 19:xx/21:xx, Endtext "Search FOOT BOMB on Roblox", Texte "Foot Bomb".
   **Fallrückzieher-Fix (User: "der Rückwärts-Salto sieht nicht richtig aus, springt nach vorne"):** S_Bicycle (lehnt nur zurück, Kick nach vorn) -> ANIMS.Bicycle (echter Rückwärts-Salto) mit back=true (Rücken zum Ziel) + contactAt=0.2 (Fuß über dem Kopf). Neu: bike_b2, slidesave_b2, airwar2_b2; 9 Posts per updateScheduledPost auf fb19_*_v2.mp4. PC war beim Aufnehmen belastet (User testete Santa-Spiel) -> 4-15 % fehlende Bilder -> tools/footbomb/dedup.py ersetzt Doppelbilder per optischem Fluss.
 
+## SKIP A HOOK OPEN-SEA-SCHIFF-EDITS ab 19.11. (User: "cleane Edits wie Foot Bomb, Schiff im Sturm, Piraten-Vibes"; Sound pirate1 NUR für Schiff-Edits)
+- **Aufnahme (nur mit User live, Studio "Skip a Hook [UPD]" maximiert auf dem RECHTEN Monitor, nichts drüber):** Edit `workspace:SetAttribute("SAH_W2Role","sea")` -> Play.
+  Server `SAH_Debug:Invoke('sea',{dbl=999999,xp=9999999,disc="all"})`; Client Request `SeaBuyBoat` sloop/brigantine/royal (Galleon/Yacht = Store), Figur an die Werft
+  (`Workspace.SAH_OpenSea.Islands.harbor.ShipSpot.SeaShip` 40069.8,5.7,-6.5) -> Request `SeaBoat "royal"`. Fahren: Client setzt `seat.ThrottleFloat/SteerFloat` in einer Schleife
+  (Autopilot `_G.SHIP_AUTO` {c, r, dir, heading, th}: Kreis um eine Insel/den Gürtel). Versetzen nur am SERVER: `boat:PivotTo` 30x je Frame (DriveState folgt); Tempo: Boot-Attribute
+  MaxSpeed 220 + BoostT. Kamera Client `BindToRenderStep("SHIPCAM")` `_G.SCAM` Modi chase/orbit/isle/low; UI aus (`_G.SHIP_UI(false)`, CoreGui aus); Licht `SHIPLIGHT`: `_G.SHIP_CLOCK`
+  (z. B. 17.3), `_G.SHIP_FOG` 0.33–0.38 (sonst Sturm/Skull-Nebel = grau). Orte (Welt +40000 in x): Sturm-Gürtel Mitte (45000,0,5000) r 780 (Auge r 270 = Spire-Insel ruhig),
+  Skull (35300,-4500), Driftwood (37042,835), Coral (43000,520). Segel nur von HINTEN/schräg sichtbar (einseitige Meshes) -> keine Front-/Seiten-Shots. Boot läuft auf Inseln/Sandbänke auf -> rückwärts + heading.
+  Aufnahme in Echtzeit: Blender `builtins._fb_take2(name, 12, 3982, 687, 1920, 1080)` (1600x900, ~45–56 fps + .ts.json) -> `Documents\Footbomb_Videos\2026-11-19\sea`. Danach Play STOP + `SAH_W2Role` = nil!
+- **Clips 19.11.:** chase1 (Tag, Leuchtturm-Insel), storm_chase1/2 (Regen, Blitz bei ~1.4 s und ~4.9 s), storm_orbit1/2, storm_low2 (große Wellen, BESTER Sturm-Clip), storm_wide1, isle_drift1,
+  skull_side1, skull_wide1, skull_low1 (Galleon vor glühendem Totenkopf). Unbrauchbar: orbit1/low1 (Segel unsichtbar), storm_low1 (zu nah), storm_wide2 (Nebel).
+  Sturm-Clips vor dem Schnitt aufhellen: ffmpeg `eq=contrast=1.35:brightness=-0.05:saturation=1.35:gamma=0.95`.
+- **Schnitt:** fbedit.py + `tools/footbomb/specs/ship_1119.py` (Kürzel-Tabelle C, edit()), Sound snd/pirate1.wav (156,6 BPM, Drop = Beat 3). 9 Posts sh_* 18:xx am 19.11.
+- **Ab 19.11. Routine:** je Account 4 Posts (12:xx SaH-Sound-Edit, Day-Slot = einziges Stimm-Video, 19:xx + 21:xx Foot Bomb) – siehe Routine-Prompt. Sounds liegen jetzt auf dem PC in promo\sounds (u1–u5, pirate1_NUR_SCHIFF, beats_fb.json).
+
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
 |---|---|---|---|---|---|---|---|
