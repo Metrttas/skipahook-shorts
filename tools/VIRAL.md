@@ -328,6 +328,7 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
   Studio-Viewport jetzt 2198x1196 (Assistant-Leiste rechts) -> Blender VP=(3843,629,2126,1196) + `_G.FB_FIXHUD(2126/2198)` nach jedem Setup (Bildzähler-Zellen), Play delay=9 (sonst fehlen die ersten Bilder). Lobby vorher -3000, danach zurück (_G.FB_LOBBY_PIVOT).
   Aufnahmen: Documents\Footbomb_Videos\2026-11-19\cine (airwar_v2, airwar2_v1, airsave_v1, slidesave_v1, slidechain_v1, bike_s1, scorp_s1, tornado_s1, flyhead_s1). Schnitt /home/claude/fb (fbedit.py, specs/fb_1119.py, tl.py = Clip-Zeiten K/I/C/E aus den Kamera-Segmenten). Sounds u1-u5 = Videos, die der User am 19.11. in den Chat geladen hat (Längen passen zu beats.json).
   18 Posts fb19_* 19:xx/21:xx, Endtext "Search FOOT BOMB on Roblox", Texte "Foot Bomb".
+  **Fallrückzieher-Fix (User: "der Rückwärts-Salto sieht nicht richtig aus, springt nach vorne"):** S_Bicycle (lehnt nur zurück, Kick nach vorn) -> ANIMS.Bicycle (echter Rückwärts-Salto) mit back=true (Rücken zum Ziel) + contactAt=0.2 (Fuß über dem Kopf). Neu: bike_b2, slidesave_b2, airwar2_b2; 9 Posts per updateScheduledPost auf fb19_*_v2.mp4. PC war beim Aufnehmen belastet (User testete Santa-Spiel) -> 4-15 % fehlende Bilder -> tools/footbomb/dedup.py ersetzt Doppelbilder per optischem Fluss.
 
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
