@@ -322,6 +322,13 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
   Ace (orange) nur Rot; Lobby sonst im Hintergrund sichtbar. Schnitt: specs/fb_1118b.py (story(): Aufbau -> Drop auf Schuss -> Einschlag -> Replay -> Jubel;
   cold=True Einschlag zuerst; montage(): PICK ONE 1/2/3). 18 Posts 19:xx/21:xx per updateScheduledPost auf fb2_*.mp4 umgestellt.
 
+- **19.11. (User: "krassere Clips: in der Luft 2-3 Pässe gegeneinander, dann Scorpion; Leute sollen GRÄTSCHEN zum Saven, nicht gerade zum Ball springen; das Spiel heißt **Foot Bomb**, nicht Footbomb"):**
+  Neue Szenen (tools/footbomb/duo/scenes2.lua + scenes3.lua): airwar (Luft-Volley, Luft-Kopfball, Ablage, Scorpion), airwar2 (Fallrückzieher, Scherenschlag, Kopfball, Volley in der Luft, Scorpion), airsave (3 Luft-Pässe, Grätschen-Save, Scorpion), slidesave (Grätschen-Save in der Ecke -> Fallrückzieher), slidechain (2 Grätschen-Saves -> Tornado). Alle alten Szenen: "Dive" -> S_SlideShot-Grätsche (Wrapper in scenes2, 1,6 Studs weiter weg vom Einschlag).
+  Ablauf: Quellen per execute_luau in 4 Teilen (~7 KB) in _G.FB_P laden (ein 29-KB-Aufruf hängte das Foot-Bomb-Studio-MCP auf -> User musste Studio neu öffnen); HttpService/raw.githubusercontent ist im Studio-Assistant gesperrt.
+  Studio-Viewport jetzt 2198x1196 (Assistant-Leiste rechts) -> Blender VP=(3843,629,2126,1196) + `_G.FB_FIXHUD(2126/2198)` nach jedem Setup (Bildzähler-Zellen), Play delay=9 (sonst fehlen die ersten Bilder). Lobby vorher -3000, danach zurück (_G.FB_LOBBY_PIVOT).
+  Aufnahmen: Documents\Footbomb_Videos\2026-11-19\cine (airwar_v2, airwar2_v1, airsave_v1, slidesave_v1, slidechain_v1, bike_s1, scorp_s1, tornado_s1, flyhead_s1). Schnitt /home/claude/fb (fbedit.py, specs/fb_1119.py, tl.py = Clip-Zeiten K/I/C/E aus den Kamera-Segmenten). Sounds u1-u5 = Videos, die der User am 19.11. in den Chat geladen hat (Längen passen zu beats.json).
+  18 Posts fb19_* 19:xx/21:xx, Endtext "Search FOOT BOMB on Roblox", Texte "Foot Bomb".
+
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
 |---|---|---|---|---|---|---|---|
