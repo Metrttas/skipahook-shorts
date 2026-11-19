@@ -21,6 +21,7 @@ for _, name in { "bike", "fake", "scorp", "tornado", "rally", "flyhead", "save" 
 					e.hold = 3
 					e.holdPose = true
 					e.t = e.t - 0.05
+					e.at = e.at - Vector3.new(e.slide.X, 0, e.slide.Z).Unit * 1.6
 				end
 			end
 			return s
@@ -51,9 +52,9 @@ SC.airwar = function()
 			{ t = 5.5, endPoint = true, at = V(34, 0, -56) },
 			{ t = 3.0, who = "r1", move = true, at = V(-15, 0, -75), from = 2.0 },
 			{ t = 2.2, who = "b1", move = true, at = V(18, 0, -70), from = 1.0 },
-			{ t = 4.7, who = "b1", move = true, at = V(22, 0, -62), from = 3.6 },
+			{ t = 4.7, who = "b1", move = true, at = V(18, 0, -74), from = 3.6 },
 			{ t = 5.0, who = "b2", move = true, at = V(31.5, 0, -64), from = 3.3 },
-			slideMiss("b2", 5.38, V(33, 0, -59), V(0.2, 0, 1), 5),
+			slideMiss("b2", 5.38, V(32.5, 0, -61), V(0.2, 0, 1), 5),
 			{ t = 6.5, who = "r1", kind = "Celebrate", pose = true, at = V(-15, 0, -75), faceTo = V(0, 0, -68), dur = 2.6 },
 			{ t = 6.3, who = "r2", kind = "Emote_Clap", pose = true, at = V(-24, 0, -79), faceTo = V(-15, 0, -75) },
 		},
@@ -88,7 +89,7 @@ SC.slidesave = function()
 			{ t = 2.85, who = "b1", kind = "S_Bicycle", at = V(17, 0, -67), jump = 4.2, gs = 1.0, big = true, power = true, faceTo = V(-33, 0, -55) },
 			{ t = 3.45, endPoint = true, at = V(-33, 0, -55) },
 			{ t = 2.6, who = "r1", move = true, at = V(-24, 0, -63), from = 1.3 },
-			slideMiss("r1", 3.33, V(-29.5, 0, -58.5), V(-0.75, 0, 0.66), 5),
+			slideMiss("r1", 3.33, V(-28, 0, -61.5), V(-0.75, 0, 0.66), 5),
 			{ t = 2.9, who = "r2", move = true, at = V(-35, 0, -66), from = 1.6 },
 			slideMiss("r2", 3.38, V(-35.5, 0, -60.5), V(-0.1, 0, 1), 4.5),
 			{ t = 4.5, who = "b1", kind = "Celebrate", pose = true, at = V(17, 0, -67), faceTo = V(5, 0, -64), dur = 2.6 },
@@ -128,7 +129,8 @@ SC.airsave = function()
 			{ t = 7.9, endPoint = true, at = V(33, 0, -57) },
 			{ t = 1.3, who = "b1", move = true, at = V(24, 0, -72), from = 0.9 },
 			{ t = 5.2, who = "r2", move = true, at = V(-18, 0, -72), from = 4.3 },
-			{ t = 6.5, who = "b1", move = true, at = V(21, 0, -62), from = 3.3 },
+			{ t = 3.0, who = "r1", move = true, at = V(-33, 0, -70), from = 2.3 },
+			{ t = 6.5, who = "b1", move = true, at = V(18, 0, -75), from = 3.3 },
 			{ t = 7.0, who = "b2", move = true, at = V(31, 0, -65), from = 5.6 },
 			slideMiss("b2", 7.78, V(32.5, 0, -60), V(0.1, 0, 1), 5),
 			{ t = 8.9, who = "r2", kind = "Celebrate", pose = true, at = V(-18, 0, -72), faceTo = V(-5, 0, -68), dur = 2.6 },
@@ -170,7 +172,7 @@ SC.slidechain = function()
 			{ t = 5.7, endPoint = true, at = V(-34, 0, -56) },
 			{ t = 2.4, who = "b1", move = true, at = V(19, 0, -72), from = 1.0 },
 			{ t = 4.9, who = "r1", move = true, at = V(-26, 0, -63), from = 3.4 },
-			slideMiss("r1", 5.58, V(-31, 0, -59), V(-0.6, 0, 0.8), 5),
+			slideMiss("r1", 5.58, V(-29, 0, -61.5), V(-0.6, 0, 0.8), 5),
 			{ t = 6.7, who = "b1", kind = "Celebrate", pose = true, at = V(19, 0, -72), faceTo = V(8, 0, -68), dur = 2.6 },
 			{ t = 6.6, who = "b2", kind = "Emote_Dab", pose = true, at = V(36, 0, -60), faceTo = V(19, 0, -72) },
 		},
