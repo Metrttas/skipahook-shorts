@@ -2,7 +2,7 @@
 #   python3 fbedit.py specs/fb_1119.py <id|all> sheet|render
 import json
 CINE = '/home/claude/fb/cine/'
-OUT = '/home/claude/fb/out1119'
+OUT = '/home/claude/fb/out1119b'
 B = json.load(open('/home/claude/fb/snd/beats.json'))
 TL = json.load(open('/home/claude/fb/tl.json'))
 SND = {'u1': ('snd/u1.wav', 7.236), 'u3': ('snd/u3.wav', 4.323), 'u4': ('snd/u4.wav', 4.612), 'u5': ('snd/u5.wav', 7.140),
@@ -10,7 +10,7 @@ SND = {'u1': ('snd/u1.wav', 7.236), 'u3': ('snd/u3.wav', 4.323), 'u4': ('snd/u4.
 RED = {'fill': (255, 70, 90)}; GOLD = {'fill': (255, 200, 40)}; CYAN = {'fill': (80, 220, 255)}
 END = 'Search FOOT BOMB on Roblox'
 # R = Clip-Zeit, ab der die Aktion gezeigt wird (lange Luft-Ballwechsel ganz zeigen)
-R = {'airwar_v2': 0.9, 'airsave_v1': 0.9, 'airwar2_v1': 1.0, 'slidesave_v1': 0.3, 'slidechain_v1': 0.3}
+R = {'airwar_v2': 0.9, 'airsave_v1': 0.9, 'airwar2_b2': 1.0, 'slidesave_b2': 0.3, 'slidechain_v1': 0.3}
 SC = {}
 for f, v in TL.items():
     SC[f.split('_')[0]] = dict(f=f, K=v['K'], I=v['I'], C=v['C'], E=v['E'], z=1.27, R=R.get(f))
