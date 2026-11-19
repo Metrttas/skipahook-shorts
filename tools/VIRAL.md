@@ -6,6 +6,8 @@
 
 **AB 19.11. (User): "Die Edits gehen viraler -> nur noch WENIGE Videos mit Stimme, lieber Sound-Edits, und Videos für ALLE Games" (Skip a Hook + Foot Bomb + weitere). Skip a Hook: cleane Kino-Edits wie Foot Bomb, v. a. OPEN SEA (Schiffe im Sturm, Piraten-Vibes); der neue Sound des Users NUR für diese Schiff-Edits.**
 
+**AB 19.11. nachmittags (User): Das Spiel heißt jetzt "Soccer Bomb" (zwei Wörter). Nie mehr "Footbomb"/"Foot Bomb" in Videos/Texten; Endtext "Search SOCCER BOMB on Roblox", Hashtags #soccerbomb #robloxsoccer.**
+
 User 2026-10-30 12:30: "bau dir ein Gedächtnis auf, was viral gehen könnte … jeden Tag 8 Videos posten".
 Vor jedem neuen Video-Tag LESEN, nach jedem Tag die Tabelle "Was lief" ergänzen (Metricool-Analytics).
 
