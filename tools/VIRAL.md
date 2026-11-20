@@ -354,6 +354,8 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
 
 - **20.11. (User): "Bei Soccer Bomb kannst du auch Edits machen, wo mehrere gute Clips aneinander gepackt sind – nicht alle Videos, aber kommt besser, wenn es mehr als einen Clip gibt."** -> `combo(scenes, snd, hook, st, labels=None)` in specs/fb_1120.py: je Clip 2 Beats Anlauf, Schuss in Zeitlupe, Einschlag; unten Schuss-Name (KICK-Tabelle) oder 1/2/3/4 zum Abstimmen. Tag-Mix: ~9 Combos (3–5 Clips) + ~9 Einzel-Storys. song1 hat nach dem Drop nur ~11 s -> nur für kurze Combos (3 Clips); itsout ist sehr schnell (Combos ~7 s). Schiff-Edits 12:xx: specs/ship_1120.py `edit(..., at=Beat)` = anderer Sound-Startpunkt je Account (3/15/27/39).
 
+- **20.11. (User): "Nicht so ähnlich, sonst denkt die Plattform, ich bin ein Spammer, der kopiert – wenigstens nicht auf demselben Account."** -> Vor jedem Render `python3 tools/footbomb/check_repeat.py specs/fb_NEU.py specs/fb_GESTERN.py specs/fb_VORGESTERN.py`: STOP = gleicher Clip/Sound zweimal am Tag auf einem Account oder Hook-Text, den der Account schon hatte; WARN = gleiche Einzel-Story wie gestern / Combo zu > 50 % wie gestern. Account = Marke + Netz. Dazu: jeder Account eigener Schnitt, eigener Sound-Startpunkt, eigener Text. Clip-Bibliothek (9 Szenen vom 19.11.) spätestens alle 2–3 Tage mit dem User neu aufnehmen.
+
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
 |---|---|---|---|---|---|---|---|
