@@ -356,6 +356,8 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
 
 - **20.11. (User): "Nicht so ähnlich, sonst denkt die Plattform, ich bin ein Spammer, der kopiert – wenigstens nicht auf demselben Account."** -> Vor jedem Render `python3 tools/footbomb/check_repeat.py specs/fb_NEU.py specs/fb_GESTERN.py specs/fb_VORGESTERN.py`: STOP = gleicher Clip/Sound zweimal am Tag auf einem Account oder Hook-Text, den der Account schon hatte; WARN = gleiche Einzel-Story wie gestern / Combo zu > 50 % wie gestern. Account = Marke + Netz. Dazu: jeder Account eigener Schnitt, eigener Sound-Startpunkt, eigener Text. Clip-Bibliothek (9 Szenen vom 19.11.) spätestens alle 2–3 Tage mit dem User neu aufnehmen.
 
+- **20.11. (User, Sounds):** Ein Sound darf auf einem Account nicht am selben Tag zweimal und nicht an 2 Tagen hintereinander laufen; nach 2 Tagen wieder ok. Sind alle Sounds verbraucht, darf wiederholt werden (`check_repeat.py ... --sounds-leer`). Open-Sea-Schiff-Edits müssen NICHT jedes Mal pirate1 nehmen (User nennt ihn wohl "Golden Brown") -> `edit(..., snd='u3'|'itsout'|...)` in ship_1120.py; bei schnellen Sounds mehr Cuts (2–3 Beats je Shot). User schickt noch mehr Sounds. Neuer Aufruf: `check_repeat.py specs/fb_NEU.py,specs/ship_NEU.py specs/fb_GESTERN.py,specs/ship_GESTERN.py`. Neue Clips alle 2–3 Tage (User: ok).
+
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
 |---|---|---|---|---|---|---|---|

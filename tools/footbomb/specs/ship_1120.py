@@ -38,7 +38,13 @@ def sg(k, n=4, speed=1.0, fx='', dz=0.0):
     return d
 
 
-def edit(shots, hook1, hook2, st2=GOLD, pre=3, at=3):
+# Ab 21.11. (User 20.11.): Schiff-Edits dürfen auch andere Sounds nehmen, nicht jedes Mal pirate1. Schnellere Sounds = mehr Cuts
+# (n zählt Beats, also wird jeder Shot bei schnellem Tempo automatisch kürzer; bei itsout/song1 lieber 2-3 Beats je Shot).
+SNDS = {'pirate1': ('snd/pirate1.wav', None), 'u1': ('snd/u1.wav', 7.236), 'u3': ('snd/u3.wav', 4.323), 'u4': ('snd/u4.wav', 4.612),
+        'u5': ('snd/u5.wav', 7.140), 'song1': ('snd/song1_fussball_drop.wav', 10.655), 'itsout': ('snd/itsout_finally_out.wav', 5.313)}
+
+
+def edit(shots, hook1, hook2, st2=GOLD, pre=3, at=3, snd='pirate1'):
     """shots: Liste von Kürzeln oder (kürzel, n, speed, fx). Die ersten `pre` Beats laufen vor dem Drop."""
     segs = []
     for i, s in enumerate(shots):
@@ -47,8 +53,10 @@ def edit(shots, hook1, hook2, st2=GOLD, pre=3, at=3):
         fx = s[3] if len(s) > 3 else ('flash' if i == 1 else 'punch' if i % 2 == 0 and i > 0 else '')
         segs.append(sg(k, n, sp, fx))
     nb = sum(x['n'] for x in segs)
-    return dict(sound=SND, s0=B[SND]['beats'][at] - pre * PER, dur=nb * PER, segs=segs, end=END,
-                text=[(0, pre * PER, hook1), (pre * PER, nb * PER, hook2, st2)])
+    f, drop = SNDS[snd]; per = B[f]['period']
+    t0 = B[f]['beats'][at] if drop is None else drop
+    return dict(sound=f, s0=t0 - pre * per, dur=nb * per, segs=segs, end=END,
+                text=[(0, pre * per, hook1), (pre * per, nb * per, hook2, st2)])
 
 
 VIDEOS = {
