@@ -273,6 +273,7 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 | 12 | 16.11. | **6** (+30,3 % laut Dashboard) | 32,663 | 1,446 | Open Sea in Studio (nicht live, games-API updated 10.11.): cc12_tt Boss-Kampf 3 Phasen · cc12_yt Sturm-Wellen, Boot sinkt -> Strand · cc12_m2 Bosse zwischen den Inseln statt an der Insel (t_1116) |
 | 13 | 18.11. | 4 **right now** (games-API 04 Uhr nachts; Dashboard nicht angemeldet) | 33,201 | 1,484 | OPEN SEA LIVE (games-API updated 17.11. 18:23 UTC): cc13_tt Open Sea out + 4 online · cc13_yt 7 Inseln/4 Bosse + 33K Besuche · cc13_m2 1,484 Favoriten + eigenes Schiff (t_1118). 17.11. fiel aus -> Zähler fortlaufend (Day 13, nicht 14) |
 | 14 | 19.11. | **0 right now** (games-API 18.11. 20:1x UTC; Dashboard nicht angemeldet) | 33,250 | 1,486 | ehrlich "0 online": cc14_tt 32 neue Fische/Sugarplum Dragon · cc14_yt 33K Besuche, was würde dich spielen lassen? · cc14_m2 Trainings-Bänke je Zone (t_1119) |
+| 15 | 20.11. | **3 right now** (games-API 20.11. ~06:30 UTC; Dashboard nicht angemeldet) | 33,521 | **1,501** | erstmals > 1,500 Favoriten: cc15_tt 3 online + 1,500 Favs + Schiff im Sturm · cc15_yt Danke + was als Nächstes? · cc15_m2 1,500 Favs + eigenes Schiff (t_1120, echte sea_*-Aufnahmen). Routine 19.11. fiel aus (device_absent) -> 20.11. morgens von Hand |
 
 ## Day-X "updating my Roblox game every day"
 - Mtrix-YT + mtfgams12: Day 1 = 5.11., **Day 2 = 6.11.** (dx_yc Fish Rush/Meteor, dx_n Ziel-Silhouette) -> Day 3 = 7.11.
@@ -299,6 +300,8 @@ Quellen = Analysen/Daten-Artikel (Videos selbst kann ich nicht ansehen); Zahlen 
 **promo\clips am 06.11. benutzt (102 Clips, alle mit neuen Startzeiten):** siehe `days/k_1106.py`. Bibliothek ist seit 5.11. komplett mehrfach
 benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fish Rush, Meteor, Got away, Zonen-Leiste, Morgen-Karte).
 
+
+- 20.11. (t_1120, nur noch Day-Slot mit Stimme): Mtrix-YT/mtfgams12 **Day 15** (dx15_yc Geisterschiff alle 20 min um Skull Rock, Schatz + 2x Glück; dx15_n Segelschiffe Sloop/Brig/Royal Galleon, größere Schiffe = stärkere Stürme); B-TT/B-YT/C-TT/C-IG **Day 14** (dx14_b Stürme bis 2x Glück + Riesenwellen, dx14_yb Flaschenpost + Sandbank-Graben/Schatzkiste, dx14_c Sea Giants im Sturmgürtel, dx14_ic Inseln Skull/Vulkan). Keine neuen Spiel-Commits seit 17.11. -> Themen = Open-Sea-Teile, die seit 17.11. LIVE sind. Neu: echte Schiff-Aufnahmen als Talk-Clips (promo/clips/sea_*.mp4 = Kopie von fb/sea) + Stills s_ship_ghost/s_sea_giant/s_ship_sloop/brig/galleon/s_finds_*/s_isle_skull/volcano/s_storm_bolt/s_bossg_1/s_spyglass. Übrig: Bosse (s_bossg_*), Fernrohr, Strudel, Kopfgelder. Nächster Tag: Day 16 bzw. Day 15, CCU Day 16.
 
 ## FOOTBOMB-Shorts ab 18.11. (User: "ab heute 2x Skip a Hook + 2x Footbomb je Account", nur SEINE Sounds, "Querformat, bisschen näher rangezoomt, oben/unten blurry, man soll mehr sehen")
 - **Aufnahme (PC, Blender-Python, ohne Installation):** Studio im Play-Modus, Kamera per Client-Skript `_G.FBCAM` (BindToRenderStep "FBCAM", Modi
@@ -348,6 +351,8 @@ benutzt -> NEUE AUFNAHMEN nötig (RECORDING.md), v. a. die neuen 217-Sachen (Fis
   Sturm-Clips vor dem Schnitt aufhellen: ffmpeg `eq=contrast=1.35:brightness=-0.05:saturation=1.35:gamma=0.95`.
 - **Schnitt:** fbedit.py + `tools/footbomb/specs/ship_1119.py` (Kürzel-Tabelle C, edit()), Sound snd/pirate1.wav (156,6 BPM, Drop = Beat 3). 9 Posts sh_* 18:xx am 19.11.
 - **Ab 19.11. Routine:** je Account 4 Posts (12:xx SaH-Sound-Edit, Day-Slot = einziges Stimm-Video, 19:xx + 21:xx Foot Bomb) – siehe Routine-Prompt. Sounds liegen jetzt auf dem PC in promo\sounds (u1–u5, pirate1_NUR_SCHIFF, beats_fb.json).
+
+- **20.11. (User): "Bei Soccer Bomb kannst du auch Edits machen, wo mehrere gute Clips aneinander gepackt sind – nicht alle Videos, aber kommt besser, wenn es mehr als einen Clip gibt."** -> `combo(scenes, snd, hook, st, labels=None)` in specs/fb_1120.py: je Clip 2 Beats Anlauf, Schuss in Zeitlupe, Einschlag; unten Schuss-Name (KICK-Tabelle) oder 1/2/3/4 zum Abstimmen. Tag-Mix: ~9 Combos (3–5 Clips) + ~9 Einzel-Storys. song1 hat nach dem Drop nur ~11 s -> nur für kurze Combos (3 Clips); itsout ist sehr schnell (Combos ~7 s). Schiff-Edits 12:xx: specs/ship_1120.py `edit(..., at=Beat)` = anderer Sound-Startpunkt je Account (3/15/27/39).
 
 ## Was lief (nach Metricool-Analytics nachtragen)
 | Datum | Konto | Video | Format | Views 48h | Likes | Kommentare | Notiz |
