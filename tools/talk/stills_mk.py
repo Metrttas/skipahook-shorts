@@ -93,6 +93,21 @@ P['s_gear_hooks']=lambda: crop('u230_gear.jpg',0,450,1800,1346)
 P['s_teaser']=lambda: cv2.imread(R+'u234_event_teaser.jpg')
 FIT={'s_poster','s_ulog','s_z_bench','s_nf_candy','s_nf_crystal','s_nf_rainbow','s_f_sugarplum','s_f_lollipop','s_f_colossus','s_f_angler',
      's_f_leviathan','s_f_unicorn','s_benches','s_gear_rods','s_gear_hooks','s_teaser'}
+# 22.11.: WINTER-UPDATE (live seit Sa 21.11. 18:00 Berlin, Updates 235-241). Nur Bilder aus dem gebackenen Live-Stand (u237/u238) bzw.
+#   ohne Palmen-Ausschnitt (u235 zeigt noch Palmen -> nur die Nacht-Insel links), HUD weggeschnitten, alles FIT.
+P['s_w_overview']=lambda: crop('u238_baked_overview.jpg',0,110,1580,880)
+P['s_w_base']=lambda: crop('u238_baked_base.jpg',0,110,1580,880)
+P['s_w_snowman']=lambda: crop('u237_base_winter.jpg',0,110,1580,880)
+P['s_w_night']=lambda: crop('u235_winter_night.jpg',150,110,840,800)
+P['s_w_poster']=lambda: cv2.imread(R+'u239_winter_poster.jpg')
+P['s_w_log']=lambda: crop('u239_update_log.jpg',400,190,1540,890)
+P['s_w_pass']=lambda: crop('u236_season2_pass.jpg',420,225,1500,855)
+P['s_w_fish']=lambda: cv2.imread(R+'u240_winter_fish.jpg')
+P['s_w_f_puffer']=lambda: panel('u240_winter_fish.jpg',3,2,0,0,2)
+P['s_w_f_koi']=lambda: panel('u240_winter_fish.jpg',3,2,1,0,2)
+P['s_w_f_betta']=lambda: panel('u240_winter_fish.jpg',3,2,0,1,2)
+P['s_w_f_narwhal']=lambda: panel('u240_winter_fish.jpg',3,2,2,1,2)
+FIT|={'s_w_overview','s_w_base','s_w_snowman','s_w_night','s_w_poster','s_w_log','s_w_pass','s_w_fish','s_w_f_puffer','s_w_f_koi','s_w_f_betta','s_w_f_narwhal'}
 names=sys.argv[2:] or list(P)
 sheet=[]
 for n in names:
